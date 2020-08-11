@@ -64,9 +64,153 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-2020-08-10-Polymorphism" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-20200811-Enumeration" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/08/11/2020-08-10-Polymorphism/" class="article-date">
+    <a href="/2020/08/11/20200811-Enumeration/" class="article-date">
+  <time datetime="2020-08-11T12:06:26.170Z" itemprop="datePublished">2020-08-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/11/20200811-Enumeration/">열거형 (Enumeration)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="열거형이란"><a href="#열거형이란" class="headerlink" title="열거형이란"></a>열거형이란</h2><ul>
+<li>몇가지 한정된 상수로 표현될 수 있는 자료형을 구현</li>
+<li><code>enum</code> 키워드를 이용하며, 내부적으로는 <code>java.lang.Enum</code> 클래스를 상속</li>
+</ul>
+<h2 id="열거형의-특징"><a href="#열거형의-특징" class="headerlink" title="열거형의 특징"></a>열거형의 특징</h2><ul>
+<li>접근 제한자는 <code>public</code>과 <code>default</code>만 사용 가능</li>
+<li>다른 클래스를 상속받을 수 없으나, 인터페이스 구현은 가능</li>
+<li>열거형 타입에는 열거형 상수와 null 값을 할당할 수 있음</li>
+</ul>
+<h2 id="열거형의-구현"><a href="#열거형의-구현" class="headerlink" title="열거형의 구현"></a>열거형의 구현</h2><ul>
+<li><p>일반적인 열거형의 구현</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> Job &#123;</span><br><span class="line">    STUDENT, MARKETING, DEVELOPER, CHIEF_EXECUTIONAL_OFFICER;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Job job = Job.STUDENT;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (job == Job.CHIEF_EXECUTIONAL_OFFICER) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;사장님, 안녕하세요?&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">switch</span> (job) &#123;</span><br><span class="line">            <span class="keyword">case</span> STUDENT: <span class="comment">// case에서는 &#x27;Job.&#x27; 을 쓰지 않는다.</span></span><br><span class="line">                System.out.println(<span class="string">&quot;You will be a great one.&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> MARKETING:</span><br><span class="line">                System.out.println(<span class="string">&quot;You make things sold.&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> DEVELOPER:</span><br><span class="line">                System.out.println(<span class="string">&quot;You usually don&#x27;t go home.&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> CHIEF_EXECUTIONAL_OFFICER:</span><br><span class="line">                System.out.println(<span class="string">&quot;You choose your company&#x27;s fate.&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                System.out.println(<span class="string">&quot;I don&#x27;t recognize what you do.&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>클래스 내부에서 열거형 구현</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">    <span class="keyword">enum</span> MyEnum &#123;</span><br><span class="line">        ONE, TWO;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(Foo.MyEnum.ONE);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>열거형에 메소드 구현</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> Symbol &#123;</span><br><span class="line">    ONE, TWO, THREE, FOUR;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Symbol <span class="title">nextSymbol</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>.equals(ONE)) &#123;</span><br><span class="line">            <span class="keyword">return</span> TWO;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">this</span>.equals(TWO)) &#123;</span><br><span class="line">            <span class="keyword">return</span> THREE;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">this</span>.equals(THREE)) &#123;</span><br><span class="line">            <span class="keyword">return</span> FOUR;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> ONE;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Symbol sym = Symbol.ONE; <span class="comment">// ONE</span></span><br><span class="line">        Symbol nextSym = sym.nextSymbol(); <span class="comment">// TWO</span></span><br><span class="line">        nextSym = nextSym.nextSymbol(); <span class="comment">// THREE</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>열거형 생성자를 이용한 enum 상수 초기화</p>
+<ul>
+<li>열거형의 생성자는 항상 <code>private</code>이며 생략 가능</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> Family &#123;</span><br><span class="line">    FATHER(<span class="string">&quot;아버지&quot;</span>), MOTHER(<span class="string">&quot;어머니&quot;</span>), SON(<span class="string">&quot;아들&quot;</span>), DAUGHTER(<span class="string">&quot;딸&quot;</span>); <span class="comment">// 생성자 호출</span></span><br><span class="line">    <span class="keyword">private</span> String koreanWord;</span><br><span class="line"></span><br><span class="line">    Family(String koreanWord) &#123; <span class="comment">// private 생성자</span></span><br><span class="line">        <span class="keyword">this</span>.koreanWord = koreanWord;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getKoreanWord</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> koreanWord;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setKoreanWord</span><span class="params">(String koreanWord)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.koreanWord = koreanWord;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Family fam = Family.SON;</span><br><span class="line">        System.out.println(fam.koreanWord) <span class="comment">// 아들</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tezla-lee.github.io/2020/08/11/20200811-Enumeration/" data-id="ckdpwlkt6000427vcdt7xdcj5" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-20200811-Interface" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/11/20200811-Interface/" class="article-date">
+  <time datetime="2020-08-11T12:05:14.235Z" itemprop="datePublished">2020-08-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/11/20200811-Interface/">인터페이스 (Interface)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="인터페이스란"><a href="#인터페이스란" class="headerlink" title="인터페이스란"></a>인터페이스란</h2><ul>
+<li>클래스를 사용하는 방식, 접점만을 선언하는 클래스와 유사한 틀</li>
+<li>아무런 구현이 되어 있지 않으며, 모든 메소드가 추상 메소드</li>
+</ul>
+<h2 id="인터페이스의-특징"><a href="#인터페이스의-특징" class="headerlink" title="인터페이스의 특징"></a>인터페이스의 특징</h2><ul>
+<li><p><code>class</code>가 아닌 <code>interface</code> 키워드로 선언</p>
+<ul>
+<li><code>public</code> 또는 <code>default</code> 접근 제어자만 사용 가능</li>
+</ul>
+</li>
+<li><p>멤버 변수는 항상 <code>public static final</code>이며, 생략 가능</p>
+</li>
+<li><p>멤버 메소드는 항상 <code>public abstract</code>이며, 생략 가능</p>
+</li>
+<li><p>클래스와 달리 인터페이스는 여러 개 상속받을 수 있다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IFoo</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MEMBER_VAR = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">int</span> MEMBER_VAR2 = <span class="number">20</span>; <span class="comment">// public static final</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">methodA</span><span class="params">(<span class="keyword">int</span> param)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">methodB</span><span class="params">(<span class="keyword">int</span> param)</span></span>; <span class="comment">// public abstract</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Foo</span> <span class="keyword">implements</span> <span class="title">IFoo</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">methodA</span><span class="params">(<span class="keyword">int</span> param)</span> </span>&#123;</span><br><span class="line">        System.out.println(param);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">methodB</span><span class="params">(<span class="keyword">int</span> param)</span> </span>&#123;</span><br><span class="line">        System.out.println(param);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="인터페이스간의-상속"><a href="#인터페이스간의-상속" class="headerlink" title="인터페이스간의 상속"></a>인터페이스간의 상속</h2><ul>
+<li><p>인터페이스 간의 ‘IS-A’ 관계</p>
+</li>
+<li><p>인터페이스가 인터페이스를 상속할 경우 <code>extends</code>로 상속</p>
+</li>
+<li><p>클래스-클래스와 달리 다중 상속 가능</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Walkable</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">walk</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Jumpable</span> <span class="keyword">extends</span> <span class="title">Walkable</span>, <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">jump</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Jumper</span> <span class="keyword">implements</span> <span class="title">Jumpable</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">walk</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;walk&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;run&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">jump</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;jump&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="JDK-1-8"><a href="#JDK-1-8" class="headerlink" title="JDK 1.8"></a>JDK 1.8</h2><ul>
+<li><p>기본 메소드 (Default method): 자식 클래스에서 구현할 필요가 없는 메소드</p>
+<ul>
+<li>인터페이스에 <code>default</code> 메소드를 구현할 수 있다.</li>
+<li><code>default</code> 메소드는 항상 <code>public</code>이다.</li>
+<li>인터페이스의 철학과 맞지 않으나, 인터페이스가 개선되었을 때 손쉽게 기능 추가를 위해 만들어짐</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IFoo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">abstractMethod</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">defaultMethod</span><span class="params">()</span> </span>&#123; <span class="comment">// 구현 클래스에서 구현할 필요가 없다.</span></span><br><span class="line">        System.out.println(<span class="string">&quot;Default method&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SuperFoo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">defaultMethod</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Super method&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FooOne</span> <span class="keyword">implements</span> <span class="title">IFoo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">abstractMethod</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FooTwo</span> <span class="keyword">extends</span> <span class="title">SuperFoo</span> <span class="keyword">implements</span> <span class="title">IFoo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">abstractMethod</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        FooOne fooOne = <span class="keyword">new</span> FooOne();</span><br><span class="line">        fooOne.defaultMethod(); <span class="comment">// Default method</span></span><br><span class="line"></span><br><span class="line">        FooTwo fooTwo = <span class="keyword">new</span> FooTwo();</span><br><span class="line">        fooTwo.defaultMethod(); <span class="comment">// Super method</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>static 메소드: 클래스 메소드와 동일하게 사용 가능</p>
+<ul>
+<li>인터페이스 이름으로 호출 가능</li>
+<li>클래스 구현체의 이름으로도 호출 가능</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IFoo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">staticMethod</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;static method&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        IFoo.staticMethod(); <span class="comment">// static method</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tezla-lee.github.io/2020/08/11/20200811-Interface/" data-id="ckdpwlkt7000527vc91qjg8qp" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-20200810-Polymorphism" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/11/20200810-Polymorphism/" class="article-date">
   <time datetime="2020-08-11T11:58:15.983Z" itemprop="datePublished">2020-08-11</time>
 </a>
     
@@ -78,7 +222,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/11/2020-08-10-Polymorphism/">다형성 (Polymorphism)</a>
+      <a class="article-title" href="/2020/08/11/20200810-Polymorphism/">다형성 (Polymorphism)</a>
     </h1>
   
 
@@ -109,7 +253,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://tezla-lee.github.io/2020/08/11/2020-08-10-Polymorphism/" data-id="ckdpw9no70003ilvce97f4jsx" class="article-share-link">Share</a>
+      <a data-url="https://tezla-lee.github.io/2020/08/11/20200810-Polymorphism/" data-id="ckdpwlkt5000327vc8u4fguv8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -119,9 +263,9 @@
 
 
   
-    <article id="post-2020-08-07-git-start" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-20200807-git-start" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/08/07/2020-08-07-git-start/" class="article-date">
+    <a href="/2020/08/07/20200807-git-start/" class="article-date">
   <time datetime="2020-08-07T07:53:13.821Z" itemprop="datePublished">2020-08-07</time>
 </a>
     
@@ -133,7 +277,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/07/2020-08-07-git-start/">Git start !</a>
+      <a class="article-title" href="/2020/08/07/20200807-git-start/">Git start !</a>
     </h1>
   
 
@@ -189,7 +333,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://tezla-lee.github.io/2020/08/07/2020-08-07-git-start/" data-id="ckdpw9no40001ilvc6g9d4e6e" class="article-share-link">Share</a>
+      <a data-url="https://tezla-lee.github.io/2020/08/07/20200807-git-start/" data-id="ckdpwlkt2000127vc2yvv6w12" class="article-share-link">Share</a>
       
       
     </footer>
@@ -231,7 +375,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://tezla-lee.github.io/2020/08/07/My-new-hexo-post/" data-id="ckdpw9no90005ilvcawgbb7wp" class="article-share-link">Share</a>
+      <a data-url="https://tezla-lee.github.io/2020/08/07/My-new-hexo-post/" data-id="ckdpwlkt8000627vc5g1f2i05" class="article-share-link">Share</a>
       
       
     </footer>
@@ -280,7 +424,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://tezla-lee.github.io/2020/08/07/hello-world/" data-id="ckdpw9no80004ilvc5ps76xcu" class="article-share-link">Share</a>
+      <a data-url="https://tezla-lee.github.io/2020/08/07/hello-world/" data-id="ckdpwlkt9000727vc8ppcejes" class="article-share-link">Share</a>
       
       
     </footer>
@@ -321,19 +465,23 @@
       <ul>
         
           <li>
-            <a href="/2020/08/11/2020-08-10-Polymorphism/">다형성 (Polymorphism)</a>
+            <a href="/2020/08/11/20200811-Enumeration/">열거형 (Enumeration)</a>
           </li>
         
           <li>
-            <a href="/2020/08/07/2020-08-07-git-start/">Git start !</a>
+            <a href="/2020/08/11/20200811-Interface/">인터페이스 (Interface)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/11/20200810-Polymorphism/">다형성 (Polymorphism)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/07/20200807-git-start/">Git start !</a>
           </li>
         
           <li>
             <a href="/2020/08/07/My-new-hexo-post/">My new hexo post</a>
-          </li>
-        
-          <li>
-            <a href="/2020/08/07/hello-world/">Hello World</a>
           </li>
         
       </ul>
