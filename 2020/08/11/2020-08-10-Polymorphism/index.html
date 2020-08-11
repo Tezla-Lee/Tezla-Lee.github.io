@@ -5,13 +5,17 @@
   
 
   
-  <title>JB&#39;s Blog</title>
+  <title>다형성 (Polymorphism) | JB&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="JB&#39;s Blog">
-<meta property="og:url" content="https://tezla-lee.github.io/index.html">
+  <meta name="description" content="다형성의 다양한 특징 부모 클래스 타입으로 자식 클래스 객체를 참조하는 특징 12345678910111213141516171819public class Foo &amp;#123;    public void methodA() &amp;#123;        return;    &amp;#125;&amp;#125;public class Bar extends Foo &amp;#123;    pub">
+<meta property="og:type" content="article">
+<meta property="og:title" content="다형성 (Polymorphism)">
+<meta property="og:url" content="https://tezla-lee.github.io/2020/08/11/2020-08-10-Polymorphism/index.html">
 <meta property="og:site_name" content="JB&#39;s Blog">
+<meta property="og:description" content="다형성의 다양한 특징 부모 클래스 타입으로 자식 클래스 객체를 참조하는 특징 12345678910111213141516171819public class Foo &amp;#123;    public void methodA() &amp;#123;        return;    &amp;#125;&amp;#125;public class Bar extends Foo &amp;#123;    pub">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-08-11T11:58:15.983Z">
+<meta property="article:modified_time" content="2020-08-11T12:01:30.809Z">
 <meta property="article:author" content="Jaebok Lee">
 <meta name="twitter:card" content="summary">
   
@@ -62,9 +66,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-2020-08-10-Polymorphism" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-2020-08-10-Polymorphism" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/08/11/2020-08-10-Polymorphism/" class="article-date">
   <time datetime="2020-08-11T11:58:15.983Z" itemprop="datePublished">2020-08-11</time>
@@ -77,8 +79,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/11/2020-08-10-Polymorphism/">다형성 (Polymorphism)</a>
+    <h1 class="article-title" itemprop="name">
+      다형성 (Polymorphism)
     </h1>
   
 
@@ -115,182 +117,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-2020-08-07-git-start" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/07/2020-08-07-git-start/" class="article-date">
-  <time datetime="2020-08-07T07:53:13.821Z" itemprop="datePublished">2020-08-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/07/2020-08-07-git-start/">Git start !</a>
-    </h1>
+    <a href="/2020/08/07/2020-08-07-git-start/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Git start !</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Set-configurations"><a href="#Set-configurations" class="headerlink" title="Set configurations"></a>Set configurations</h3><p>github과 git의 연동…?</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git config --global user.name <span class="string">&quot;&#123;github username&#125;&quot;</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config --global user.email <span class="string">&quot;&#123;github email address&#125;&quot;</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config --global core.editor <span class="string">&quot;vim&quot;</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config --global core.pager <span class="string">&quot;cat&quot;</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config --list</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="My-first-repo"><a href="#My-first-repo" class="headerlink" title="My first-repo"></a>My first-repo</h2><ul>
-<li>git init 을 하기 전에 현재 위치를 꼭 확인한다.</li>
-<li>중간중간 git status를 사용하여 확인해주면 더 좋다.</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> mkdir first-repo &amp;&amp; <span class="built_in">cd</span> first-repo</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git init</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git remote add origin https://github.com/&#123;username&#125;/&#123;reponame&#125;.git</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> touch README.md</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git add README.md</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git commit -m <span class="string">&quot;docs: Create README.md&quot;</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git push -u origin master</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Second-push-to-my-first-repo"><a href="#Second-push-to-my-first-repo" class="headerlink" title="Second push to my first-repo"></a>Second push to my first-repo</h2><ul>
-<li>git add {file name}으로 원하는 파일만 stage(index)로 올릴 수 있다.</li>
-<li>git add * 또는 git add . 은 모든 파일(수정된 파일)을 stage로 올린다.</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># make some change on README.md</span><br><span class="line">$ git add .</span><br><span class="line">$ git commit</span><br><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure>
-
-<h3 id="Commit-convention"><a href="#Commit-convention" class="headerlink" title="Commit convention"></a>Commit convention</h3><ul>
-<li>커밋 제목은 50자 이내로 요약하여 작성한다.</li>
-<li>제목과 내용사이 한 칸</li>
-<li>prefix를 이용하여 한 눈에 커밋의 용도를 쉽게 한다.</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">feat: features</span><br><span class="line">docs: documentations</span><br><span class="line">conf: configurations</span><br><span class="line">test: test</span><br><span class="line">fix: bug-fix</span><br><span class="line">refactor: refactoring</span><br><span class="line">ci: Continuous Integration</span><br><span class="line">build: Build</span><br><span class="line">perf: Performance</span><br></pre></td></tr></table></figure>
-
-<h2 id="Start-Project-with-git-clone"><a href="#Start-Project-with-git-clone" class="headerlink" title="Start Project with git clone"></a>Start Project with git clone</h2><ul>
-<li>디렉토리를 주의하여 git clone 한다.</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git clone &#123;repo address&#125;</span><br><span class="line">$ git add .</span><br><span class="line">$ git commit</span><br><span class="line">$ git push</span><br></pre></td></tr></table></figure>
-
-<h2 id="Github을-이용해-Page-만들기"><a href="#Github을-이용해-Page-만들기" class="headerlink" title="Github을 이용해 Page 만들기"></a>Github을 이용해 Page 만들기</h2><ul>
-<li>github 저장소를 활용해 정적인 사이트 호스팅 가능 (1개 제한)</li>
-<li><code>user.name</code>.github.io로 repo 작성하면 끝</li>
-</ul>
-<h1 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo !"></a>Hexo !</h1><h2 id="Init-Hexo-Project"><a href="#Init-Hexo-Project" class="headerlink" title="Init Hexo Project"></a>Init Hexo Project</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> hexo init &lt;folder&gt;</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> &lt;folder&gt;</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> npm install</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Clean-amp-amp-generate-static-files"><a href="#Clean-amp-amp-generate-static-files" class="headerlink" title="Clean &amp;&amp; generate static files"></a>Clean &amp;&amp; generate static files</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> hexo clean &amp;&amp; hexo generate</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Run-Hexo-server"><a href="#Run-Hexo-server" class="headerlink" title="Run Hexo server"></a>Run Hexo server</h2><ul>
-<li>서버 켜기</li>
-<li>서버 끄기</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> hexo server</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> Crtl + C</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Deploy"><a href="#Deploy" class="headerlink" title="Deploy"></a>Deploy</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> npm install hexo-deployer-git --save</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repo: &lt;repository url&gt;  branch: [branch] #published</span><br><span class="line">  message:</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://tezla-lee.github.io/2020/08/07/2020-08-07-git-start/" data-id="ckdpw9no40001ilvc6g9d4e6e" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-My-new-hexo-post" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/07/My-new-hexo-post/" class="article-date">
-  <time datetime="2020-08-07T07:19:59.000Z" itemprop="datePublished">2020-08-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/07/My-new-hexo-post/">My new hexo post</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Let me introduce myself!!</p>
-<ul>
-<li>name : Jabok Lee</li>
-<li>Hobby : Collect guitars</li>
-<li>Favorite soccer team : Manchester United</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://tezla-lee.github.io/2020/08/07/My-new-hexo-post/" data-id="ckdpw9no90005ilvcawgbb7wp" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/07/hello-world/" class="article-date">
-  <time datetime="2020-08-07T07:11:10.912Z" itemprop="datePublished">2020-08-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/07/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://tezla-lee.github.io/2020/08/07/hello-world/" data-id="ckdpw9no80004ilvc5ps76xcu" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
 
 </section>
         
