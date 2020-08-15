@@ -1,19 +1,19 @@
-
 <!DOCTYPE html>
-<html lang="en">
-    
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="JB&#39;s Blog">
-    <title>인터페이스 (Interface) - JB&#39;s Blog</title>
-    <meta name="author" content="Jaebok Lee">
+    <meta charset="utf-8" />
+
     
+
     
+    <title>인터페이스 (Interface) | JB&#39;s Blog</title>
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Jaebok Lee","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"articleBody":"인터페이스란\n클래스를 사용하는 방식, 접점만을 선언하는 클래스와 유사한 틀\n아무런 구현이 되어 있지 않으며, 모든 메소드가 추상 메소드\n\n인터페이스의 특징\nclass가 아닌 interface 키워드로 선언\n\npublic 또는 default 접근 제어자만 사용 가능\n\n\n멤버 변수는 항상 public static final이며, 생략 가능\n\n멤버 메소드는 항상 public abstract이며, 생략 가능\n\n클래스와 달리 인터페이스는 여러 개 상속받을 수 있다.\n12345678910111213141516171819public interface IFoo &#123;    public static final int MEMBER_VAR = 10;    int MEMBER_VAR2 = 20; // public static final    public abstract void methodA(int param);    void methodB(int param); // public abstract&#125;public class Foo implements IFoo &#123;    @Override    void methodA(int param) &#123;        System.out.println(param);    &#125;    @Override    void methodB(int param) &#123;        System.out.println(param);    &#125;&#125;\n\n\n\n인터페이스간의 상속\n인터페이스 간의 ‘IS-A’ 관계\n\n인터페이스가 인터페이스를 상속할 경우 extends로 상속\n\n클래스-클래스와 달리 다중 상속 가능\n12345678910111213141516171819202122232425262728interface Walkable &#123;    void walk();&#125;interface Runnable &#123;    void run();&#125;public interface Jumpable extends Walkable, Runnable &#123;    void jump();&#125;public class Jumper implements Jumpable &#123;    @Override    void walk() &#123;        System.out.println(&quot;walk&quot;);    &#125;    @Override    void run() &#123;        System.out.println(&quot;run&quot;);    &#125;    @Override    void jump() &#123;        System.out.println(&quot;jump&quot;);    &#125;&#125;\n\n\n\nJDK 1.8\n기본 메소드 (Default method): 자식 클래스에서 구현할 필요가 없는 메소드\n\n인터페이스에 default 메소드를 구현할 수 있다.\ndefault 메소드는 항상 public이다.\n인터페이스의 철학과 맞지 않으나, 인터페이스가 개선되었을 때 손쉽게 기능 추가를 위해 만들어짐\n\n1234567891011121314151617181920212223242526272829303132333435interface IFoo &#123;    void abstractMethod();    default void defaultMethod() &#123; // 구현 클래스에서 구현할 필요가 없다.        System.out.println(&quot;Default method&quot;);    &#125;&#125;class SuperFoo &#123;    void defaultMethod() &#123;        System.out.println(&quot;Super method&quot;);    &#125;&#125;class FooOne implements IFoo &#123;    void abstractMethod() &#123;        return;    &#125;&#125;class FooTwo extends SuperFoo implements IFoo &#123;    void abstractMethod() &#123;        return;    &#125;&#125;public class Main &#123;    public static void main(String[] args) &#123;        FooOne fooOne = new FooOne();        fooOne.defaultMethod(); // Default method        FooTwo fooTwo = new FooTwo();        fooTwo.defaultMethod(); // Super method    &#125;&#125;\n\nstatic 메소드: 클래스 메소드와 동일하게 사용 가능\n\n인터페이스 이름으로 호출 가능\n클래스 구현체의 이름으로도 호출 가능\n\n1234567891011interface IFoo &#123;    static void staticMethod() &#123;        System.out.println(&quot;static method&quot;);    &#125;&#125;public class Main &#123;    public static void main(String[] args) &#123;        IFoo.staticMethod(); // static method    &#125;&#125;\n\n\n","dateCreated":"2020-08-11T21:05:14+09:00","dateModified":"2020-08-11T21:09:15+09:00","datePublished":"2020-08-11T21:05:14+09:00","description":"","headline":"인터페이스 (Interface)","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://tezla-lee.github.io/2020/08/11/20200811-Interface/"},"publisher":{"@type":"Organization","name":"Jaebok Lee","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"url":"https://tezla-lee.github.io/2020/08/11/20200811-Interface/"}</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="" />
+    
     <meta name="description" content="인터페이스란 클래스를 사용하는 방식, 접점만을 선언하는 클래스와 유사한 틀 아무런 구현이 되어 있지 않으며, 모든 메소드가 추상 메소드  인터페이스의 특징 class가 아닌 interface 키워드로 선언  public 또는 default 접근 제어자만 사용 가능   멤버 변수는 항상 public static final이며, 생략 가능  멤버 메소드는 항상">
-<meta property="og:type" content="blog">
+<meta property="og:type" content="article">
 <meta property="og:title" content="인터페이스 (Interface)">
 <meta property="og:url" content="https://tezla-lee.github.io/2020/08/11/20200811-Interface/index.html">
 <meta property="og:site_name" content="JB&#39;s Blog">
@@ -24,319 +24,184 @@
 <meta property="article:author" content="Jaebok Lee">
 <meta name="twitter:card" content="summary">
     
+
+    
+        <link rel="alternate" href="/" title="JB&#39;s Blog" type="application/atom+xml" />
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
     
         
-    
-    
-    
-    
-    
-    <!--STYLES-->
-    
-<link rel="stylesheet" href="/assets/css/style-xouq9rjmu0bgjugvawhvdbpwrvvfmquaepb1vdwwtjv5olvz3vv4hzrussgz.min.css">
-
-    <!--STYLES END-->
-    
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
 
     
-
     
         
-    
-</head>
-
-    <body>
-        <div id="blog">
-            <!-- Define author's picture -->
-
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
 
     
+    
+    
+    
 
-<header id="header" data-behavior="4">
-    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
-    <div class="header-title">
-        <a
-            class="header-title-link"
-            href="/%20"
-            aria-label=""
-        >
-            JB&#39;s Blog
-        </a>
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
     </div>
-    
-        
-            <a
-                class="header-right-picture "
-                href="#about"
-                aria-label="Open the link: /#about"
-            >
-        
-        
-        </a>
-    
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    uncategorized
+    </h1>
+</div>
 
-            <!-- Define author's picture -->
-
-
-<nav id="sidebar" data-behavior="4">
-    <div class="sidebar-container">
+                        <div class="main-body-content">
+                            <article id="post-20200811-Interface" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        
-            <ul class="sidebar-buttons">
-            
-                <li class="sidebar-button">
-                    
-                        <a
-                            class="sidebar-button-link "
-                            href="/"
-                            
-                            rel="noopener"
-                            title="Home"
-                        >
-                        <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Home</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a
-                            class="sidebar-button-link "
-                            href="/all-categories"
-                            
-                            rel="noopener"
-                            title="Categories"
-                        >
-                        <i class="sidebar-button-icon fa fa-bookmark" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Categories</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a
-                            class="sidebar-button-link "
-                            href="/all-tags"
-                            
-                            rel="noopener"
-                            title="Tags"
-                        >
-                        <i class="sidebar-button-icon fa fa-tags" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Tags</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a
-                            class="sidebar-button-link "
-                            href="/all-archives"
-                            
-                            rel="noopener"
-                            title="Archives"
-                        >
-                        <i class="sidebar-button-icon fa fa-archive" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Archives</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a
-                            class="sidebar-button-link open-algolia-search"
-                            href="#search"
-                            
-                            rel="noopener"
-                            title="Search"
-                        >
-                        <i class="sidebar-button-icon fa fa-search" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Search</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a
-                            class="sidebar-button-link "
-                            href="#about"
-                            
-                            rel="noopener"
-                            title="About"
-                        >
-                        <i class="sidebar-button-icon fa fa-question" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">About</span>
-                    </a>
-            </li>
-            
-        </ul>
-        
-            <ul class="sidebar-buttons">
-            
-                <li class="sidebar-button">
-                    
-                        <a
-                            class="sidebar-button-link "
-                            href="https://github.com/"
-                            
-                                target="_blank"
-                            
-                            rel="noopener"
-                            title="GitHub"
-                        >
-                        <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">GitHub</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a
-                            class="sidebar-button-link "
-                            href="http://stackoverflow.com/users"
-                            
-                                target="_blank"
-                            
-                            rel="noopener"
-                            title="Stack Overflow"
-                        >
-                        <i class="sidebar-button-icon fab fa-stack-overflow" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Stack Overflow</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a
-                            class="sidebar-button-link "
-                            href="https://twitter.com/"
-                            
-                                target="_blank"
-                            
-                            rel="noopener"
-                            title="Twitter"
-                        >
-                        <i class="sidebar-button-icon fab fa-twitter" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Twitter</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a
-                            class="sidebar-button-link "
-                            href="https://facebook.com/"
-                            
-                                target="_blank"
-                            
-                            rel="noopener"
-                            title="Facebook"
-                        >
-                        <i class="sidebar-button-icon fab fa-facebook" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Facebook</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a
-                            class="sidebar-button-link "
-                            href="https://plus.google.com/"
-                            
-                                target="_blank"
-                            
-                            rel="noopener"
-                            title="Google +"
-                        >
-                        <i class="sidebar-button-icon fab fa-google-plus" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Google +</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a
-                            class="sidebar-button-link "
-                            href="https://www.linkedin.com/profile/"
-                            
-                                target="_blank"
-                            
-                            rel="noopener"
-                            title="LinkedIn"
-                        >
-                        <i class="sidebar-button-icon fab fa-linkedin" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">LinkedIn</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a
-                            class="sidebar-button-link "
-                            href="/mailto"
-                            
-                            rel="noopener"
-                            title="Mail"
-                        >
-                        <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Mail</span>
-                    </a>
-            </li>
-            
-        </ul>
-        
-            <ul class="sidebar-buttons">
-            
-                <li class="sidebar-button">
-                    
-                        <a
-                            class="sidebar-button-link "
-                            href="/atom.xml"
-                            
-                            rel="noopener"
-                            title="RSS"
-                        >
-                        <i class="sidebar-button-icon fa fa-rss" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">RSS</span>
-                    </a>
-            </li>
-            
-        </ul>
-        
-    </div>
-</nav>
-
-            
-            <div id="main" data-behavior="4"
-                 class="
-                        hasCoverMetaIn
-                        ">
+            <header class="article-header">
                 
-<article class="post">
     
-    
-        <div class="post-header main-content-wrap text-left">
-    
-        <h1 class="post-title">
-            인터페이스 (Interface)
+        <h1 class="article-title" itemprop="name">
+        인터페이스 (Interface)
         </h1>
     
-    
-        <div class="post-meta">
-    <time datetime="2020-08-11T21:05:14+09:00">
-	
-		    Aug 11, 2020
-    	
-    </time>
-    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2020/08/11/20200811-Interface/" class="article-date">
+       <time datetime="2020-08-11T12:05:14.235Z" itemprop="datePublished">2020-08-11</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2020/08/11/20200811-Interface/" class="article-date">
+     <time datetime="2020-08-11T12:09:15.069Z" itemprop="dateModified">2020-08-11</time>
+  </a>
 </div>
 
-    
-</div>
 
-    
-    <div class="post-content markdown">
-        <div class="main-content-wrap">
+                
+
+                
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
             <h2 id="인터페이스란"><a href="#인터페이스란" class="headerlink" title="인터페이스란"></a>인터페이스란</h2><ul>
 <li>클래스를 사용하는 방식, 접점만을 선언하는 클래스와 유사한 틀</li>
 <li>아무런 구현이 되어 있지 않으며, 모든 메소드가 추상 메소드</li>
@@ -384,317 +249,454 @@
 </li>
 </ul>
 
-            
-
-
         </div>
-    </div>
-    <div id="post-footer" class="post-footer main-content-wrap">
-        
-        
-            <div class="post-actions-wrap">
-    <nav>
-        <ul class="post-actions post-action-nav">
-            <li class="post-action">
-                
-                    
-                <a
-                    class="post-action-btn btn btn--default tooltip--top"
-                    href="/2020/08/11/20200811-Enumeration/"
-                    data-tooltip="열거형 (Enumeration)"
-                    aria-label="PREVIOUS: 열거형 (Enumeration)"
-                >
-                    
-                        <i class="fa fa-angle-left" aria-hidden="true"></i>
-                        <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
-                    </a>
-            </li>
-            <li class="post-action">
-                
-                    
-                <a
-                    class="post-action-btn btn btn--default tooltip--top"
-                    href="/2020/08/11/20200810-Polymorphism/"
-                    data-tooltip="다형성 (Polymorphism)"
-                    aria-label="NEXT: 다형성 (Polymorphism)"
-                >
-                    
-                        <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
-                        <i class="fa fa-angle-right" aria-hidden="true"></i>
-                    </a>
-            </li>
-        </ul>
-    </nav>
-    <ul class="post-actions post-action-share">
-        <li class="post-action hide-lg hide-md hide-sm">
-            <a
-                class="post-action-btn btn btn--default btn-open-shareoptions"
-                href="#btn-open-shareoptions"
-                aria-label="Share this post"
-            >
-                <i class="fa fa-share-alt" aria-hidden="true"></i>
-            </a>
-        </li>
-        
+        <footer class="article-footer">
             
-            
-            <li class="post-action hide-xs">
-                <a
-                    class="post-action-btn btn btn--default"
-                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tezla-lee.github.io/2020/08/11/20200811-Interface/"
-                    title="Share on Facebook"
-                    aria-label="Share on Facebook"
-                >
-                    <i class="fab fa-facebook" aria-hidden="true"></i>
-                </a>
-            </li>
-        
-            
-            
-            <li class="post-action hide-xs">
-                <a
-                    class="post-action-btn btn btn--default"
-                    target="new" href="https://twitter.com/intent/tweet?text=https://tezla-lee.github.io/2020/08/11/20200811-Interface/"
-                    title="Share on Twitter"
-                    aria-label="Share on Twitter"
-                >
-                    <i class="fab fa-twitter" aria-hidden="true"></i>
-                </a>
-            </li>
-        
-            
-            
-            <li class="post-action hide-xs">
-                <a
-                    class="post-action-btn btn btn--default"
-                    target="new" href="https://plus.google.com/share?url=https://tezla-lee.github.io/2020/08/11/20200811-Interface/"
-                    title="Share on Google+"
-                    aria-label="Share on Google+"
-                >
-                    <i class="fab fa-google-plus" aria-hidden="true"></i>
-                </a>
-            </li>
-        
-        
-            
-        
-        <li class="post-action">
-            
-                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
-            
-                <i class="fa fa-list" aria-hidden="true"></i>
-            </a>
-        </li>
-    </ul>
-</div>
 
 
-        
-        
-            
-        
+
+    <a data-url="https://tezla-lee.github.io/2020/08/11/20200811-Interface/" data-id="ckdvxbmed00065vvchzz9843c" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
     </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Jaebok Lee"
+        },
+        "headline": "인터페이스 (Interface)",
+        "image": "https://tezla-lee.github.io",
+        "keywords": "",
+        "genre": "",
+        "datePublished": "2020-08-11",
+        "dateCreated": "2020-08-11",
+        "dateModified": "2020-08-11",
+        "url": "https://tezla-lee.github.io/2020/08/11/20200811-Interface/",
+        "description": "인터페이스란
+클래스를 사용하는 방식, 접점만을 선언하는 클래스와 유사한 틀
+아무런 구현이 되어 있지 않으며, 모든 메소드가 추상 메소드
+
+인터페이스의 특징
+class가 아닌 interface 키워드로 선언
+
+public 또는 default 접근 제어자만 사용 가능
+
+
+멤버 변수는 항상 public static final이며, 생략 가능
+
+멤버 메소드는 항상",
+        "wordCount": 892
+    }
+</script>
+
 </article>
 
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
 
 
-                <footer id="footer" class="main-content-wrap">
-    <span class="copyrights">
-        Copyrights &copy; 2020 Jaebok Lee. All Rights Reserved.
-    </span>
-</footer>
+    
+    </section>
 
-            </div>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
             
-                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
-                    <div class="post-actions-wrap">
-    <nav>
-        <ul class="post-actions post-action-nav">
-            <li class="post-action">
                 
-                    
-                <a
-                    class="post-action-btn btn btn--default tooltip--top"
-                    href="/2020/08/11/20200811-Enumeration/"
-                    data-tooltip="열거형 (Enumeration)"
-                    aria-label="PREVIOUS: 열거형 (Enumeration)"
-                >
-                    
-                        <i class="fa fa-angle-left" aria-hidden="true"></i>
-                        <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
                     </a>
-            </li>
-            <li class="post-action">
+                </li>
                 
-                    
-                <a
-                    class="post-action-btn btn btn--default tooltip--top"
-                    href="/2020/08/11/20200810-Polymorphism/"
-                    data-tooltip="다형성 (Polymorphism)"
-                    aria-label="NEXT: 다형성 (Polymorphism)"
-                >
-                    
-                        <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
-                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
                     </a>
-            </li>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="stack-overflow" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-stack-overflow"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
         </ul>
-    </nav>
-    <ul class="post-actions post-action-share">
-        <li class="post-action hide-lg hide-md hide-sm">
-            <a
-                class="post-action-btn btn btn--default btn-open-shareoptions"
-                href="#btn-open-shareoptions"
-                aria-label="Share this post"
-            >
-                <i class="fa fa-share-alt" aria-hidden="true"></i>
-            </a>
-        </li>
+    </div>
+    
         
-            
-            
-            <li class="post-action hide-xs">
-                <a
-                    class="post-action-btn btn btn--default"
-                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tezla-lee.github.io/2020/08/11/20200811-Interface/"
-                    title="Share on Facebook"
-                    aria-label="Share on Facebook"
-                >
-                    <i class="fab fa-facebook" aria-hidden="true"></i>
-                </a>
-            </li>
+<nav id="article-nav">
+    
+        <a href="/2020/08/11/20200811-Enumeration/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
         
-            
-            
-            <li class="post-action hide-xs">
-                <a
-                    class="post-action-btn btn btn--default"
-                    target="new" href="https://twitter.com/intent/tweet?text=https://tezla-lee.github.io/2020/08/11/20200811-Interface/"
-                    title="Share on Twitter"
-                    aria-label="Share on Twitter"
-                >
-                    <i class="fab fa-twitter" aria-hidden="true"></i>
-                </a>
-            </li>
+            열거형 (Enumeration)
         
-            
-            
-            <li class="post-action hide-xs">
-                <a
-                    class="post-action-btn btn btn--default"
-                    target="new" href="https://plus.google.com/share?url=https://tezla-lee.github.io/2020/08/11/20200811-Interface/"
-                    title="Share on Google+"
-                    aria-label="Share on Google+"
-                >
-                    <i class="fab fa-google-plus" aria-hidden="true"></i>
-                </a>
-            </li>
-        
-        
-            
-        
-        <li class="post-action">
-            
-                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
-            
-                <i class="fa fa-list" aria-hidden="true"></i>
-            </a>
-        </li>
-    </ul>
-</div>
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2020/08/11/20200810-Polymorphism/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">다형성 (Polymorphism)</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
 
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/08/16/200815-Pineapple/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://user-images.githubusercontent.com/67692842/90316887-60140280-df60-11ea-805a-416710f829ff.jpeg)" alt="파인애플 키우기" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/08/16/200815-Pineapple/" class="title">파인애플 키우기</a></p>
+                            <p class="item-date"><time datetime="2020-08-15T15:11:07.878Z" itemprop="datePublished">2020-08-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/08/11/20200811-Enumeration/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/08/11/20200811-Enumeration/" class="title">열거형 (Enumeration)</a></p>
+                            <p class="item-date"><time datetime="2020-08-11T12:06:26.170Z" itemprop="datePublished">2020-08-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/08/11/20200811-Interface/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/08/11/20200811-Interface/" class="title">인터페이스 (Interface)</a></p>
+                            <p class="item-date"><time datetime="2020-08-11T12:05:14.235Z" itemprop="datePublished">2020-08-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/08/11/20200810-Polymorphism/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/08/11/20200810-Polymorphism/" class="title">다형성 (Polymorphism)</a></p>
+                            <p class="item-date"><time datetime="2020-08-11T11:58:15.983Z" itemprop="datePublished">2020-08-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/08/07/20200807-git-start/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/08/07/20200807-git-start/" class="title">Git start !</a></p>
+                            <p class="item-date"><time datetime="2020-08-07T07:53:13.821Z" itemprop="datePublished">2020-08-07</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
 
                 </div>
-                
-    <div id="share-options-bar" class="share-options-bar" data-behavior="4">
-        <i id="btn-close-shareoptions" class="fa fa-times"></i>
-        <ul class="share-options">
-            
-                
-                
-                <li class="share-option">
-                    <a
-                        class="share-option-btn"
-                        target="new"
-                        href="https://www.facebook.com/sharer/sharer.php?u=https://tezla-lee.github.io/2020/08/11/20200811-Interface/"
-                        aria-label="Share on Facebook"
-                    >
-                        <i class="fab fa-facebook" aria-hidden="true"></i><span>Share on Facebook</span>
-                    </a>
-                </li>
-            
-                
-                
-                <li class="share-option">
-                    <a
-                        class="share-option-btn"
-                        target="new"
-                        href="https://twitter.com/intent/tweet?text=https://tezla-lee.github.io/2020/08/11/20200811-Interface/"
-                        aria-label="Share on Twitter"
-                    >
-                        <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
-                    </a>
-                </li>
-            
-                
-                
-                <li class="share-option">
-                    <a
-                        class="share-option-btn"
-                        target="new"
-                        href="https://plus.google.com/share?url=https://tezla-lee.github.io/2020/08/11/20200811-Interface/"
-                        aria-label="Share on Google+"
-                    >
-                        <i class="fab fa-google-plus" aria-hidden="true"></i><span>Share on Google+</span>
-                    </a>
-                </li>
-            
-        </ul>
-    </div>
-
-
-            
+            </div>
         </div>
-        
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2020 Jaebok Lee</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
 
-
-<div id="about">
-    <div id="about-card">
-        <div id="about-btn-close">
-            <i class="fa fa-times"></i>
-        </div>
-        
-            <h4 id="about-card-name">Jaebok Lee</h4>
-        
-            <div id="about-card-bio"><p>author.bio</p>
-</div>
-        
-        
-            <div id="about-card-job">
-                <i class="fa fa-briefcase"></i>
-                <br/>
-                <p>author.job</p>
 
             </div>
-        
-        
+        </div>
     </div>
-</div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'https://tezla-lee.github.io/2020/08/11/20200811-Interface/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
 
         
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
         
-<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
-        <!--SCRIPTS-->
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
 
-<script src="/assets/js/script-oq60gzkwrtrqt2lfb3guboo7wjsaecylpxk2x780fliwbri3x8tnigdcwwfo.min.js"></script>
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
 
-<!--SCRIPTS END-->
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
 
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
 
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
     
 
 
 
+<!-- Custom Scripts -->
 
-    </body>
+<script src="/js/main.js"></script>
+
+
+</body>
 </html>
