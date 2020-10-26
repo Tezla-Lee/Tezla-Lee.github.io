@@ -20,7 +20,7 @@
 <meta property="og:description" content="MySQL 시작Index 데이터 베이스의 개요 Mysql 설치 및 설정 샘플 데이터 추가 Mysql Workbench 사용법 데이터 베이스 모델링 SQL문의 종류 : DML DDL DCL SELECT FROM WHERE, IN, LIKE ORDER BY LIMIT GROUP BY, HAVING CREATE USE ALTER DROP DATA TYPE Con">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-10-26T09:57:41.149Z">
-<meta property="article:modified_time" content="2020-10-26T10:30:15.285Z">
+<meta property="article:modified_time" content="2020-10-26T10:44:15.937Z">
 <meta property="article:author" content="Jaebok Lee">
 <meta name="twitter:card" content="summary">
     
@@ -180,7 +180,7 @@
 <div class="article-date">
   <i class="fa fa-calendar-plus-o"></i>
   <a href="/2020/10/26/20201026-MySQL/" class="article-date">
-     <time datetime="2020-10-26T10:30:15.285Z" itemprop="dateModified">2020-10-26</time>
+     <time datetime="2020-10-26T10:44:15.937Z" itemprop="dateModified">2020-10-26</time>
   </a>
 </div>
 
@@ -228,38 +228,41 @@
 <li>VIEW</li>
 <li>INDEX</li>
 </ol>
-<h1 id="1-데이터-베이스의-개요"><a href="#1-데이터-베이스의-개요" class="headerlink" title="1. 데이터 베이스의 개요"></a>1. 데이터 베이스의 개요</h1><h2 id="DB-Database"><a href="#DB-Database" class="headerlink" title="DB : Database"></a>DB : Database</h2><pre><code>데이터를 통합하여 관리하는 데이터의 집합</code></pre>
-<h2 id="DBMS-Database-Management-System"><a href="#DBMS-Database-Management-System" class="headerlink" title="DBMS : Database Management System"></a>DBMS : Database Management System</h2><pre><code>데이터 베이스를 관리하는 미들웨어 시스템, 데이터 베이스 관리 시스템</code></pre>
-<h2 id="RDBMS-Relational-Database-Management-System"><a href="#RDBMS-Relational-Database-Management-System" class="headerlink" title="RDBMS : Relational Database Management System"></a>RDBMS : Relational Database Management System</h2><pre><code>Oracle, Mysql, Postgresql, Sqlite
-데이터의 테이블 사이에 키값으로 관계를 가지고 있는 데이터 베이스</code></pre>
-<h2 id="NoSQL"><a href="#NoSQL" class="headerlink" title="NoSQL"></a>NoSQL</h2><pre><code>Mongodb, Hbase, Cassandra
-데이터 테이블 사이의 관계가 없이 데이터를 저장하는 데이터 베이스
-데이터 사이의 관계가 없으므로 복잡성이 작고 많은 데이터의 저장이 가능</code></pre>
-<h2 id="MySQL의-특징"><a href="#MySQL의-특징" class="headerlink" title="MySQL의 특징"></a>MySQL의 특징</h2><pre><code>MySQL은 오픈소스이며 다중 사용자와 다중 스레드 지원
-다양한 운영체제에 다양한 프로그래밍 언어 지원
-표준 SQL을 사용
-작고 강력하며 가격이 저렴</code></pre>
+<h1 id="1-데이터-베이스의-개요"><a href="#1-데이터-베이스의-개요" class="headerlink" title="1. 데이터 베이스의 개요"></a>1. 데이터 베이스의 개요</h1><h2 id="DB-Database"><a href="#DB-Database" class="headerlink" title="DB : Database"></a>DB : Database</h2><p>데이터를 통합하여 관리하는 데이터의 집합</p>
+<h2 id="DBMS-Database-Management-System"><a href="#DBMS-Database-Management-System" class="headerlink" title="DBMS : Database Management System"></a>DBMS : Database Management System</h2><p>데이터 베이스를 관리하는 미들웨어 시스템, 데이터 베이스 관리 시스템</p>
+<h2 id="RDBMS-Relational-Database-Management-System"><a href="#RDBMS-Relational-Database-Management-System" class="headerlink" title="RDBMS : Relational Database Management System"></a>RDBMS : Relational Database Management System</h2><p>Oracle, Mysql, Postgresql, Sqlite</p>
+<p>데이터의 테이블 사이에 키값으로 관계를 가지고 있는 데이터 베이스</p>
+<h2 id="NoSQL"><a href="#NoSQL" class="headerlink" title="NoSQL"></a>NoSQL</h2><p>Mongodb, Hbase, Cassandra</p>
+<p>데이터 테이블 사이의 관계가 없이 데이터를 저장하는 데이터 베이스</p>
+<p>데이터 사이의 관계가 없으므로 복잡성이 작고 많은 데이터의 저장이 가능</p>
+<h2 id="MySQL의-특징"><a href="#MySQL의-특징" class="headerlink" title="MySQL의 특징"></a>MySQL의 특징</h2><ul>
+<li>MySQL은 오픈소스이며 다중 사용자와 다중 스레드 지원</li>
+<li>다양한 운영체제에 다양한 프로그래밍 언어 지원</li>
+<li>표준 SQL을 사용</li>
+<li>작고 강력하며 가격이 저렴</li>
+</ul>
 <p>Oracle pricing table - <a target="_blank" rel="noopener" href="http://www.oracle.com/us/corporate/pricing/technology-price-">http://www.oracle.com/us/corporate/pricing/technology-price-</a><br>list-070617.pdf</p>
-<h2 id="History"><a href="#History" class="headerlink" title="History"></a>History</h2><pre><code>1995 - MySQL AB사에 의해 첫 버전 발표
-2008 - 썬마이크로시스템이 MySQL AB 인수, 5.1 버전
-2009 - 오라클이 썬마이크로시스템 인수
-2018 - MySQL 8.0 버전 발표</code></pre>
-<h2 id="License"><a href="#License" class="headerlink" title="License"></a>License</h2><pre><code>MySQL을 포함하는 하드웨어나 소프트웨어 기타 장비를 판매하는 경우 라이센스 필요
-배포시 소스를 공개하면 무료이지만 소스공개를 원하지 않는 경우 사용라이센스 필요
-서비스에 이용하는건 무료로 가능</code></pre>
-<h1 id="2-Mysql-설치-및-설정"><a href="#2-Mysql-설치-및-설정" class="headerlink" title="2. Mysql 설치 및 설정"></a>2. Mysql 설치 및 설정</h1><ul>
-<li><p>AWS EC2 인스턴스에 Ubuntu OS에 MySQL 5.7.x 버전 설치</p>
+<h2 id="History"><a href="#History" class="headerlink" title="History"></a>History</h2><ul>
+<li><p>1995 - MySQL AB사에 의해 첫 버전 발표</p>
 </li>
-<li><p>EC2 인스턴스 생성</p>
+<li><p>2008 - 썬마이크로시스템이 MySQL AB 인수, 5.1 버전</p>
+</li>
+<li><p>2009 - 오라클이 썬마이크로시스템 인수</p>
+</li>
+<li><p>2018 - MySQL 8.0 버전 발표</p>
+</li>
+</ul>
+<h2 id="License"><a href="#License" class="headerlink" title="License"></a>License</h2><p>MySQL을 포함하는 하드웨어나 소프트웨어 기타 장비를 판매하는 경우 라이센스 필요</p>
+<p>배포시 소스를 공개하면 무료이지만 소스공개를 원하지 않는 경우 사용라이센스 필요</p>
+<p>서비스에 이용하는건 무료로 가능</p>
+<h1 id="2-Mysql-설치-및-설정"><a href="#2-Mysql-설치-및-설정" class="headerlink" title="2. Mysql 설치 및 설정"></a>2. Mysql 설치 및 설정</h1><p>AWS EC2 인스턴스에 Ubuntu OS에 MySQL 5.7.x 버전 설치</p>
+<p>EC2 인스턴스 생성</p>
 <ul>
 <li>t2.micro</li>
 <li>Ubuntu 18.04 버전</li>
 <li>보안그룹에서 3306 포트 추가</li>
 </ul>
-</li>
-<li><p>EC2 인스턴스에 접속</p>
-</li>
-</ul>
+<p>EC2 인스턴스에 접속</p>
 <h2 id="pem-파일-400-권한으로-변경"><a href="#pem-파일-400-권한으로-변경" class="headerlink" title="pem 파일 400 권한으로 변경"></a>pem 파일 400 권한으로 변경</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ssh -i ~/.ssh/rada.pem ubuntu@15.164.231.87</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="apt-get-업데이트"><a href="#apt-get-업데이트" class="headerlink" title="apt-get 업데이트"></a>apt-get 업데이트</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get update -y</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get upgrade -y</span></span><br></pre></td></tr></table></figure>
@@ -293,15 +296,12 @@ https://dev.mysql.com/doc/index-other.html</code></pre>
 
 <h2 id="데이터-베이스에-데이터-추가"><a href="#데이터-베이스에-데이터-추가" class="headerlink" title="데이터 베이스에 데이터 추가"></a>데이터 베이스에 데이터 추가</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> mysql -u root -p world &lt; world.sql</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> mysql -u root -p sakila &lt; sakila-schema.sql</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> mysql -u root -p sakila &lt; sakila-data.sql</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> mysql -u root -p employees &lt; employees.sql</span></span><br></pre></td></tr></table></figure>
 
-<p>8</p>
-<h1 id="4-Mysql-Workbench-사용법"><a href="#4-Mysql-Workbench-사용법" class="headerlink" title="4. Mysql Workbench 사용법"></a>4. Mysql Workbench 사용법</h1><pre><code>Mysql Management Tool
-Workbench 다운로드 및 설치
-https://dev.mysql.com/downloads/workbench/
-
-Workbench를 이용한 접속
-
-Test Connection</code></pre>
-<h1 id="5-데이터-베이스-모델링"><a href="#5-데이터-베이스-모델링" class="headerlink" title="5. 데이터 베이스 모델링"></a>5. 데이터 베이스 모델링</h1><pre><code>데이터 베이스 모델링은 데이터 베이스에서의 테이블 구조를 미리 계획해서 작성하는 작업입니다. RDBMS는 테이블간에 유기적으로 연결되어 있기 때문에 모델링을 잘하는것이 중요합니다. 기본적으로 개념적 모델링, 논리적 모델링, 물리적 모델링 절차로 설계됩니다.</code></pre>
+<h1 id="4-Mysql-Workbench-사용법"><a href="#4-Mysql-Workbench-사용법" class="headerlink" title="4. Mysql Workbench 사용법"></a>4. Mysql Workbench 사용법</h1><p>Mysql Management Tool</p>
+<p>Workbench 다운로드 및 설치</p>
+<p><a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/workbench/">https://dev.mysql.com/downloads/workbench/</a></p>
+<p>Workbench를 이용한 접속</p>
+<p>Test Connection</p>
+<h1 id="5-데이터-베이스-모델링"><a href="#5-데이터-베이스-모델링" class="headerlink" title="5. 데이터 베이스 모델링"></a>5. 데이터 베이스 모델링</h1><p>데이터 베이스 모델링은 데이터 베이스에서의 테이블 구조를 미리 계획해서 작성하는 작업입니다. RDBMS는 테이블간에유기적으로 연결되어 있기 때문에 모델링을 잘하는것이 중요합니다.<br>기본적으로 개념적 모델링, 논리적 모델링, 물리적모델링 절차로 설계됩니다.</p>
 <ul>
 <li><p>개념적 모델링 : 업무분석해서 핵심 데이터의 집합을 정의하는 과정</p>
 </li>
@@ -310,36 +310,64 @@ Test Connection</code></pre>
 <li><p>물리적 모델링 : 논리적 모델링을 DBMS에 추가하기 위해 구체화 되는과정</p>
 </li>
 </ul>
-<h2 id="EER-다이어그램-생성"><a href="#EER-다이어그램-생성" class="headerlink" title="EER 다이어그램 생성"></a>EER 다이어그램 생성</h2><pre><code>File - New Model 선택
-이름 설정
-EER(Diagram) - ADD Diagram
-테이블 추가
-컬럼추가
-테이블 관계 연결
-모델링 파일을 실제 데이터 베이스에 연결
-File - Save Model 선택 후 저장 (test.mwb)</code></pre>
-<h2 id="EER-다이어그램-파일을-적용하기"><a href="#EER-다이어그램-파일을-적용하기" class="headerlink" title="EER 다이어그램 파일을 적용하기"></a>EER 다이어그램 파일을 적용하기</h2><pre><code>File - Open Model
-Database - Forward Engineer
-MySQL Server 연결정보를 선택하고 Continue 선택
-실행 쿼리에서 VISIABE 제거 후 실행 (버전에 따른 syntax 문제)</code></pre>
-<h2 id="데이터-베이스를-EER-다이어그램으로-변경"><a href="#데이터-베이스를-EER-다이어그램으로-변경" class="headerlink" title="데이터 베이스를 EER 다이어그램으로 변경"></a>데이터 베이스를 EER 다이어그램으로 변경</h2><pre><code>Database - Reverse Engineer</code></pre>
-<h3 id="관계선-의미"><a href="#관계선-의미" class="headerlink" title="관계선 의미"></a>관계선 의미</h3><pre><code>실선 : 식별관계 : 부모가 있어야 자식이 생성됨
-점선 : 비식별관계 : 부모가 없어도 자식이 생성됨</code></pre>
+<h2 id="EER-다이어그램-생성"><a href="#EER-다이어그램-생성" class="headerlink" title="EER 다이어그램 생성"></a>EER 다이어그램 생성</h2><ul>
+<li>File - New Model 선택</li>
+<li>이름 설정</li>
+<li>EER(Diagram) - ADD Diagram</li>
+<li>테이블 추가</li>
+<li>컬럼추가</li>
+<li>테이블 관계 연결</li>
+<li>모델링 파일을 실제 데이터 베이스에 연결</li>
+<li>File - Save Model 선택 후 저장 (test.mwb)</li>
+</ul>
+<h2 id="EER-다이어그램-파일을-적용하기"><a href="#EER-다이어그램-파일을-적용하기" class="headerlink" title="EER 다이어그램 파일을 적용하기"></a>EER 다이어그램 파일을 적용하기</h2><ul>
+<li>File - Open Model</li>
+<li>Database - Forward Engineer</li>
+<li>MySQL Server 연결정보를 선택하고 Continue 선택</li>
+<li>실행 쿼리에서 VISIABE 제거 후 실행 (버전에 따른 syntax 문제)</li>
+</ul>
+<h2 id="데이터-베이스를-EER-다이어그램으로-변경"><a href="#데이터-베이스를-EER-다이어그램으로-변경" class="headerlink" title="데이터 베이스를 EER 다이어그램으로 변경"></a>데이터 베이스를 EER 다이어그램으로 변경</h2><p>Database - Reverse Engineer</p>
+<h3 id="관계선-의미"><a href="#관계선-의미" class="headerlink" title="관계선 의미"></a>관계선 의미</h3><ul>
+<li><p>실선 : 식별관계 : 부모가 있어야 자식이 생성됨</p>
+</li>
+<li><p>점선 : 비식별관계 : 부모가 없어도 자식이 생성됨</p>
 <ul>
 <li>1:N - 없을수 있음</li>
 <li>1:1 - 1:1로 존재</li>
 <li>1:N - 1개는 존재</li>
 </ul>
-<h1 id="6-SQL문의-종류-DML-DDL-DCL"><a href="#6-SQL문의-종류-DML-DDL-DCL" class="headerlink" title="6. SQL문의 종류 : DML DDL DCL"></a>6. SQL문의 종류 : DML DDL DCL</h1><h2 id="SQL문의-종류"><a href="#SQL문의-종류" class="headerlink" title="SQL문의 종류"></a>SQL문의 종류</h2><ul>
-<li><p>DML<br>Data Manipulation Language<br>데이터 조작어<br>데이터 검색, 삽입, 수정, 삭제등에 사용<br>SELECT, INSERT, UPDATE, DELETE<br>트랜젝션이 발생하는 SQL문</p>
-</li>
-<li><p>DDL<br>Data Definition Language<br>데이터 정의어<br>데이터 베이스, 테이블, 뷰, 인덱스등의 데이터 베이스 개체를 생성, 삭제, 변경에 사용<br>CREATE, DROP, ALTER, TRUNCATE<br>실행 즉시 DB에 적용</p>
-</li>
-<li><p>DCL<br>Data Control Language<br>데이터 제어어<br>사용자의 권한을 부여하거나 빼앗을때 사용<br>GRUNT, REVORKE, DENY</p>
 </li>
 </ul>
-<h1 id="7-SELECT-FROM"><a href="#7-SELECT-FROM" class="headerlink" title="7. SELECT FROM"></a>7. SELECT FROM</h1><h2 id="데이터를-검색할때-사용되는-문법"><a href="#데이터를-검색할때-사용되는-문법" class="headerlink" title="데이터를 검색할때 사용되는 문법"></a>데이터를 검색할때 사용되는 문법</h2><h3 id="기본-포멧"><a href="#기본-포멧" class="headerlink" title="기본 포멧"></a>기본 포멧</h3><pre><code>SELECT &lt;column_name_1&gt;, &lt;column_name_2&gt;, ...
-FROM &lt;table_name&gt;</code></pre>
+<h1 id="6-SQL문의-종류-DML-DDL-DCL"><a href="#6-SQL문의-종류-DML-DDL-DCL" class="headerlink" title="6. SQL문의 종류 : DML DDL DCL"></a>6. SQL문의 종류 : DML DDL DCL</h1><h2 id="SQL문의-종류"><a href="#SQL문의-종류" class="headerlink" title="SQL문의 종류"></a>SQL문의 종류</h2><ul>
+<li><p>DML</p>
+<ul>
+<li>Data Manipulation Language</li>
+<li>데이터 조작어</li>
+<li>데이터 검색, 삽입, 수정, 삭제등에 사용</li>
+<li>SELECT, INSERT, UPDATE, DELETE</li>
+<li>트랜젝션이 발생하는 SQL문</li>
+</ul>
+</li>
+<li><p>DDL</p>
+<ul>
+<li>Data Definition Language</li>
+<li>데이터 정의어</li>
+<li>데이터 베이스, 테이블, 뷰, 인덱스등의 데이터 베이스 개체를 생성, 삭제, 변경에 사용</li>
+<li>CREATE, DROP, ALTER, TRUNCATE</li>
+<li>실행 즉시 DB에 적용</li>
+</ul>
+</li>
+<li><p>DCL</p>
+<ul>
+<li>Data Control Language</li>
+<li>데이터 제어어</li>
+<li>사용자의 권한을 부여하거나 빼앗을때 사용</li>
+<li>GRUNT, REVORKE, DENY</li>
+</ul>
+</li>
+</ul>
+<h1 id="7-SELECT-FROM"><a href="#7-SELECT-FROM" class="headerlink" title="7. SELECT FROM"></a>7. SELECT FROM</h1><h2 id="데이터를-검색할때-사용되는-문법"><a href="#데이터를-검색할때-사용되는-문법" class="headerlink" title="데이터를 검색할때 사용되는 문법"></a>데이터를 검색할때 사용되는 문법</h2><h3 id="기본-포멧"><a href="#기본-포멧" class="headerlink" title="기본 포멧"></a>기본 포멧</h3><p>SELECT <column_name_1>, <column_name_2>, …</p>
+<p>FROM <table_name></p>
 <h2 id="SELECT-FROM"><a href="#SELECT-FROM" class="headerlink" title="SELECT FROM"></a>SELECT FROM</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SELECT *</span><br><span class="line">FROM world.country;</span><br><span class="line"></span><br><span class="line">USE world;</span><br><span class="line"></span><br><span class="line">SELECT code, name, population</span><br><span class="line">FROM country;</span><br></pre></td></tr></table></figure>
 
 <h2 id="WHERE-비교연산-논리연산"><a href="#WHERE-비교연산-논리연산" class="headerlink" title="WHERE : 비교연산, 논리연산"></a>WHERE : 비교연산, 논리연산</h2><h2 id="인구가-1억-이상인-국가-데이터-출력"><a href="#인구가-1억-이상인-국가-데이터-출력" class="headerlink" title="인구가 1억 이상인 국가 데이터 출력"></a>인구가 1억 이상인 국가 데이터 출력</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT code, name, population</span><br><span class="line">FROM country</span><br><span class="line">WHERE population &gt;&#x3D; 200000000;</span><br></pre></td></tr></table></figure>
@@ -474,7 +502,7 @@ GROUP BY, HAVING
 CREATE USE ALTER DROP
 DATA TYPE
 Con",
-        "wordCount": 1711
+        "wordCount": 1709
     }
 </script>
 
