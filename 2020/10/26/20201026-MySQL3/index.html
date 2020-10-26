@@ -6,21 +6,21 @@
     
 
     
-    <title>MySQL 2 | Tezla&#39;s Blog</title>
+    <title>MySQL 3 | Tezla&#39;s Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content="" />
     
-    <meta name="description" content="MySQL 2Index GROUP BY, HAVING CREATE USE ALTER DROP DATA TYPE Constraint : 제약조건 INSERT UPDATE SET DELETE TRUNCATE  11. GRUOP BY HAVINGGROUP BY는 여러개의 동일한 데이터를 가지는 특정 컬럼을 합쳐주는 역할을 하는 명령입니다. SQL에는 아래와 같은">
+    <meta name="description" content="MySQL 3Index Functions 1 (CONCAT, CEIL, ROUND, TRUNCATE, DATE_FORMAT) Functions 2 (IF, IFNULL, CASE) JOIN UNION Sub Query VIEW INDEX  18. Functions 1 (CONCAT, CEIL, ROUND, TRUNCATE, DATE_FORMAT)CEIL,">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MySQL 2">
+<meta property="og:title" content="MySQL 3">
 <meta property="og:url" content="https://tezla-lee.github.io/2020/10/26/20201026-MySQL3/index.html">
 <meta property="og:site_name" content="Tezla&#39;s Blog">
-<meta property="og:description" content="MySQL 2Index GROUP BY, HAVING CREATE USE ALTER DROP DATA TYPE Constraint : 제약조건 INSERT UPDATE SET DELETE TRUNCATE  11. GRUOP BY HAVINGGROUP BY는 여러개의 동일한 데이터를 가지는 특정 컬럼을 합쳐주는 역할을 하는 명령입니다. SQL에는 아래와 같은">
+<meta property="og:description" content="MySQL 3Index Functions 1 (CONCAT, CEIL, ROUND, TRUNCATE, DATE_FORMAT) Functions 2 (IF, IFNULL, CASE) JOIN UNION Sub Query VIEW INDEX  18. Functions 1 (CONCAT, CEIL, ROUND, TRUNCATE, DATE_FORMAT)CEIL,">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-10-26T11:28:13.013Z">
-<meta property="article:modified_time" content="2020-10-26T11:28:18.616Z">
+<meta property="article:modified_time" content="2020-10-26T11:43:02.931Z">
 <meta property="article:author" content="Jaebok Lee">
 <meta name="twitter:card" content="summary">
     
@@ -160,7 +160,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-        MySQL 2
+        MySQL 3
         </h1>
     
 
@@ -180,7 +180,7 @@
 <div class="article-date">
   <i class="fa fa-calendar-plus-o"></i>
   <a href="/2020/10/26/20201026-MySQL3/" class="article-date">
-     <time datetime="2020-10-26T11:28:18.616Z" itemprop="dateModified">2020-10-26</time>
+     <time datetime="2020-10-26T11:43:02.931Z" itemprop="dateModified">2020-10-26</time>
   </a>
 </div>
 
@@ -202,155 +202,161 @@
 
             
 
-            <h1 id="MySQL-2"><a href="#MySQL-2" class="headerlink" title="MySQL 2"></a>MySQL 2</h1><h2 id="Index"><a href="#Index" class="headerlink" title="Index"></a>Index</h2><ol start="11">
-<li>GROUP BY, HAVING</li>
-<li>CREATE USE ALTER DROP</li>
-<li>DATA TYPE</li>
-<li>Constraint : 제약조건</li>
-<li>INSERT</li>
-<li>UPDATE SET</li>
-<li>DELETE TRUNCATE</li>
+            <h1 id="MySQL-3"><a href="#MySQL-3" class="headerlink" title="MySQL 3"></a>MySQL 3</h1><h2 id="Index"><a href="#Index" class="headerlink" title="Index"></a>Index</h2><ol start="18">
+<li>Functions 1 (CONCAT, CEIL, ROUND, TRUNCATE, DATE_FORMAT)</li>
+<li>Functions 2 (IF, IFNULL, CASE)</li>
+<li>JOIN</li>
+<li>UNION</li>
+<li>Sub Query</li>
+<li>VIEW</li>
+<li>INDEX</li>
 </ol>
-<h1 id="11-GRUOP-BY-HAVING"><a href="#11-GRUOP-BY-HAVING" class="headerlink" title="11. GRUOP BY HAVING"></a>11. GRUOP BY HAVING</h1><p>GROUP BY는 여러개의 동일한 데이터를 가지는 특정 컬럼을 합쳐주는 역할을 하는 명령입니다.</p>
-<p>SQL에는 아래와 같은 그룹함수가 있습니다.</p>
-<p>COUNT, MAX, MIN, AVG, VAR_SAMP, STDDEV</p>
-<h2 id="world-데이터-베이스로-이동"><a href="#world-데이터-베이스로-이동" class="headerlink" title="world 데이터 베이스로 이동"></a>world 데이터 베이스로 이동</h2><p>world 데이터 베이스는 city, country, countrylanguage 테이블이 있는 데이터 베이스 입니다.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">sql&gt;</span><span class="bash"> use world</span></span><br></pre></td></tr></table></figure>
+<h1 id="18-Functions-1-CONCAT-CEIL-ROUND-TRUNCATE-DATE-FORMAT"><a href="#18-Functions-1-CONCAT-CEIL-ROUND-TRUNCATE-DATE-FORMAT" class="headerlink" title="18. Functions 1 (CONCAT, CEIL, ROUND, TRUNCATE, DATE_FORMAT)"></a>18. Functions 1 (CONCAT, CEIL, ROUND, TRUNCATE, DATE_FORMAT)</h1><p>CEIL, ROUND, TRUNCATE는 소수점 올림, 반올림, 버림 함수입니다.</p>
+<h2 id="CEIL"><a href="#CEIL" class="headerlink" title="CEIL"></a>CEIL</h2><p>CEIL는 실수 데이터를 올림 할 때 사용합니다.</p>
+<p>12.345를 올림하여 정수로 나타냄</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT CEIL(12.345)</span><br></pre></td></tr></table></figure>
 
-<h1 id="COUNT"><a href="#COUNT" class="headerlink" title="COUNT"></a>COUNT</h1><h2 id="city-테이블의-CountryCode를-묶고-각-코드마다-몇개의-데이터가-있는지-확인"><a href="#city-테이블의-CountryCode를-묶고-각-코드마다-몇개의-데이터가-있는지-확인" class="headerlink" title="city 테이블의 CountryCode를 묶고 각 코드마다 몇개의 데이터가 있는지 확인"></a>city 테이블의 CountryCode를 묶고 각 코드마다 몇개의 데이터가 있는지 확인</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">sql&gt;</span><span class="bash"> SELECT CountryCode, COUNT(CountryCode)</span></span><br><span class="line">     FROM city</span><br><span class="line">     GROUP BY CountryCode</span><br></pre></td></tr></table></figure>
+<p>국가별 언어 사용 비율을 소수 첫번째자리에서 올림하여 정수로 나타냄</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT CountryCode, Language, Percentage, CEIL(Percentage)</span><br><span class="line">FROM countrylanguage</span><br></pre></td></tr></table></figure>
 
-<h2 id="countrylanguage-테이블에서-전체-언어가-몇개-있는지-구하시오"><a href="#countrylanguage-테이블에서-전체-언어가-몇개-있는지-구하시오" class="headerlink" title="countrylanguage 테이블에서 전체 언어가 몇개 있는지 구하시오."></a>countrylanguage 테이블에서 전체 언어가 몇개 있는지 구하시오.</h2><p>DISTINCT 중복을 제거해주는 문법</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">sql&gt;</span><span class="bash"> SELECT COUNT(DISTINCT(Language)) as language_count</span></span><br><span class="line">     FROM countrylanguage</span><br></pre></td></tr></table></figure>
+<p>ROUND</p>
+<p>ROUND는 실수데이터를 반올림 할 때 사용합니다.</p>
+<h1 id="12-345를-소수-둘째자리까지-나타내고-소수-셋째자리에서-반올림"><a href="#12-345를-소수-둘째자리까지-나타내고-소수-셋째자리에서-반올림" class="headerlink" title="12.345를 소수 둘째자리까지 나타내고 소수 셋째자리에서 반올림"></a>12.345를 소수 둘째자리까지 나타내고 소수 셋째자리에서 반올림</h1><p>SELECT ROUND(12.345, 2)</p>
+<h1 id="국가별-언어-사용-비율을-소수-첫번째자리에서-반올림하여-정수로-나타냄"><a href="#국가별-언어-사용-비율을-소수-첫번째자리에서-반올림하여-정수로-나타냄" class="headerlink" title="국가별 언어 사용 비율을 소수 첫번째자리에서 반올림하여 정수로 나타냄"></a>국가별 언어 사용 비율을 소수 첫번째자리에서 반올림하여 정수로 나타냄</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT CountryCode, Language, Percentage, ROUND(Percentage, 0)</span><br><span class="line">FROM countrylanguage</span><br></pre></td></tr></table></figure>
 
-<h1 id="MAX"><a href="#MAX" class="headerlink" title="MAX"></a>MAX</h1><h2 id="대륙별-인구수와-GNP-최대-값을-조회"><a href="#대륙별-인구수와-GNP-최대-값을-조회" class="headerlink" title="대륙별 인구수와 GNP 최대 값을 조회"></a>대륙별 인구수와 GNP 최대 값을 조회</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">sql&gt;</span><span class="bash"> SELECT continent, MAX(Population) as Population, MAX(GNP) as GNP</span></span><br><span class="line">     FROM country</span><br><span class="line">     GROUP BY continent</span><br></pre></td></tr></table></figure>
+<h2 id="TRUNCATE"><a href="#TRUNCATE" class="headerlink" title="TRUNCATE"></a>TRUNCATE</h2><p>TRUNCATE는 실수 데이터를 버림 할 때 사용합니다.</p>
+<p>12.345를 소수 둘째자리까지 나타내고 소수 셋째자리에서 버림</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT TRUNCATE(12.345, 2)</span><br></pre></td></tr></table></figure>
 
-<h1 id="MIN"><a href="#MIN" class="headerlink" title="MIN"></a>MIN</h1><h2 id="대륙별-인구수와-GNP-최소-값을-조회-GNP와-인구수가-0이-아닌-데이터-중에서"><a href="#대륙별-인구수와-GNP-최소-값을-조회-GNP와-인구수가-0이-아닌-데이터-중에서" class="headerlink" title="대륙별 인구수와 GNP 최소 값을 조회 (GNP와 인구수가 0이 아닌 데이터 중에서)"></a>대륙별 인구수와 GNP 최소 값을 조회 (GNP와 인구수가 0이 아닌 데이터 중에서)</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">sql&gt;</span><span class="bash"> SELECT continent, MIN(Population) as Population, MIN(GNP) as GNP</span></span><br><span class="line">     FROM country</span><br><span class="line">     WHERE GNP != 0 AND Population != 0</span><br><span class="line">     GROUP BY continent</span><br></pre></td></tr></table></figure>
+<p>국가별 언어 사용 비율을 소수 첫번째자리에서 버림하여 정수로 나타냄</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SELECT CountryCode, Language, Percentage, TRUNCATE(Percentage, 0)</span><br><span class="line">FROM countrylanguage</span><br><span class="line"></span><br><span class="line">SELECT CountryCode, Language, Percentage, ROUND(Percentage, 0),</span><br><span class="line">TRUNCATE(Percentage, 0)</span><br><span class="line">FROM countrylanguage</span><br></pre></td></tr></table></figure>
 
-<h1 id="SUM"><a href="#SUM" class="headerlink" title="SUM"></a>SUM</h1><h2 id="대륙별-총-인구수와-총-GNP"><a href="#대륙별-총-인구수와-총-GNP" class="headerlink" title="대륙별 총 인구수와 총 GNP"></a>대륙별 총 인구수와 총 GNP</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">sql&gt;</span><span class="bash"> SELECT continent, SUM(Population) as Population, SUM(GNP) as GNP</span></span><br><span class="line">     FROM country</span><br><span class="line">     WHERE GNP != 0 AND Population != 0</span><br><span class="line">     GROUP BY continent</span><br></pre></td></tr></table></figure>
+<h2 id="DATE-FORMAT"><a href="#DATE-FORMAT" class="headerlink" title="DATE_FORMAT"></a>DATE_FORMAT</h2><p>DATE_FORMAT은 날짜 데이터에 대한 포멧을 바꿔줍니다.</p>
+<p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html">https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html</a></p>
+<p>sakila 데이터 베이스에서 월별 총 수입</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT DATE_FORMAT(payment_date, &quot;%Y-%m&quot;) AS monthly, SUM(amount) AS amount</span><br><span class="line">FROM payment</span><br><span class="line">GROUP BY monthly</span><br></pre></td></tr></table></figure>
 
-<h1 id="AVG"><a href="#AVG" class="headerlink" title="AVG"></a>AVG</h1><h2 id="대륙별-평균-인구수와-평균-GNP-결과를-인구수로-내림차순-정렬"><a href="#대륙별-평균-인구수와-평균-GNP-결과를-인구수로-내림차순-정렬" class="headerlink" title="대륙별 평균 인구수와 평균 GNP 결과를 인구수로 내림차순 정렬"></a>대륙별 평균 인구수와 평균 GNP 결과를 인구수로 내림차순 정렬</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">sql&gt;</span><span class="bash"> SELECT continent, AVG(Population) as Population, AVG(GNP) as GNP</span></span><br><span class="line">     FROM country</span><br><span class="line">     WHERE GNP != 0 AND Population != 0</span><br><span class="line">     GROUP BY continent</span><br><span class="line">     ORDER BY Population DESC</span><br></pre></td></tr></table></figure>
+<h1 id="19-Functions-2-IF-IFNULL-CASE"><a href="#19-Functions-2-IF-IFNULL-CASE" class="headerlink" title="19. Functions 2 (IF, IFNULL, CASE)"></a>19. Functions 2 (IF, IFNULL, CASE)</h1><p>SQL에서도 다른 언어에서 처럼 조건문 사용이 가능합니다. IF, CASE 에 대해서 설명합니다.</p>
+<h2 id="IF"><a href="#IF" class="headerlink" title="IF"></a>IF</h2><p>IF(조건, 참, 거짓)</p>
+<p>도시의 인구가 100만이 넘으면 “big city” 그렇지 않으면 “small city”를 출력하는 city_scale 컬럼을 추가</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT name, population, IF(population &gt; 1000000, &quot;big city&quot;, &quot;small city&quot;) AS city_scale</span><br><span class="line">FROM city</span><br></pre></td></tr></table></figure>
 
-<h1 id="HAVING"><a href="#HAVING" class="headerlink" title="HAVING"></a>HAVING</h1><p>GROUP BY에서 반환되는 결과에 조건을 줄수 있습니다.</p>
-<h2 id="대륙별-전체인구를-구하고-5억이상인-대륙만-조회"><a href="#대륙별-전체인구를-구하고-5억이상인-대륙만-조회" class="headerlink" title="대륙별 전체인구를 구하고 5억이상인 대륙만 조회"></a>대륙별 전체인구를 구하고 5억이상인 대륙만 조회</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">sql&gt;</span><span class="bash"> SELECT continent, SUM(Population) as Population</span></span><br><span class="line">     FROM country</span><br><span class="line">     GROUP BY continent</span><br><span class="line">     HAVING Population &gt; 500000000</span><br></pre></td></tr></table></figure>
+<h2 id="IFNULL"><a href="#IFNULL" class="headerlink" title="IFNULL"></a>IFNULL</h2><p>IFNULL(참, 거짓)</p>
+<p>독립년도가 없는 데이터는 0으로 출력</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT IndepYear, IFNULL(IndepYear, 0) as IndepYear</span><br><span class="line">FROM country</span><br></pre></td></tr></table></figure>
 
-<h2 id="대륙별-평균-인구수-평균-GNP-1인당-GNP한-결과를-1인당-GNP가-0-01-이상인-데이터를-조회하고"><a href="#대륙별-평균-인구수-평균-GNP-1인당-GNP한-결과를-1인당-GNP가-0-01-이상인-데이터를-조회하고" class="headerlink" title="대륙별 평균 인구수, 평균 GNP, 1인당 GNP한 결과를 1인당 GNP가 0.01 이상인 데이터를 조회하고"></a>대륙별 평균 인구수, 평균 GNP, 1인당 GNP한 결과를 1인당 GNP가 0.01 이상인 데이터를 조회하고</h2><p>1인당 GNP를 내림차순으로 정렬</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">sql&gt;</span><span class="bash"> SELECT continent, AVG(Population) as Population, AVG(GNP) as GNP,</span></span><br><span class="line">     AVG(GNP) / AVG(Population) * 1000 as AVG</span><br><span class="line">     FROM country</span><br><span class="line">     WHERE GNP != 0 AND Population != 0</span><br><span class="line">     GROUP BY continent</span><br><span class="line">     HAVING AVG &gt; 0.01</span><br><span class="line">     ORDER BY AVG DESC</span><br></pre></td></tr></table></figure>
+<h2 id="CASE"><a href="#CASE" class="headerlink" title="CASE"></a>CASE</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CASE</span><br><span class="line">WHEN (조건1) THEN (출력1)</span><br><span class="line">WHEN (조건2) THEN (출력2)</span><br><span class="line">END AS (컬럼명)</span><br></pre></td></tr></table></figure>
 
-<h1 id="WITH-ROLLUP"><a href="#WITH-ROLLUP" class="headerlink" title="WITH ROLLUP"></a>WITH ROLLUP</h1><p>sakila</p>
-<h2 id="고객과-스탭별-매출과-고객별-매출의-총합을-출력"><a href="#고객과-스탭별-매출과-고객별-매출의-총합을-출력" class="headerlink" title="고객과 스탭별 매출과 고객별 매출의 총합을 출력"></a>고객과 스탭별 매출과 고객별 매출의 총합을 출력</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">sql&gt;</span><span class="bash"> SELECT customer_id, staff_id, SUM(amount) as amount</span></span><br><span class="line">     FROM payment</span><br><span class="line">     GROUP BY customer_id, staff_id</span><br><span class="line">     WITH ROLLUP</span><br></pre></td></tr></table></figure>
+<p>나라별로 인구가 10억 이상, 1억 이상, 1억 이하인 컬럼을 추가하여 출력</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SELECT name, population,</span><br><span class="line">CASE</span><br><span class="line">WHEN population &gt; 1000000000 THEN &quot;upper 1 bilion&quot;</span><br><span class="line">WHEN population &gt; 100000000 THEN &quot;upper 100 milion&quot;</span><br><span class="line">ELSE &quot;below 100 milion&quot;</span><br><span class="line">END AS result</span><br><span class="line">FROM country</span><br></pre></td></tr></table></figure>
 
-<h1 id="12-CREATE-USE-ALTER-DROP"><a href="#12-CREATE-USE-ALTER-DROP" class="headerlink" title="12. CREATE USE ALTER DROP"></a>12. CREATE USE ALTER DROP</h1><h1 id="CREATE"><a href="#CREATE" class="headerlink" title="CREATE"></a>CREATE</h1><h2 id="데이터-베이스-생성"><a href="#데이터-베이스-생성" class="headerlink" title="데이터 베이스 생성"></a>데이터 베이스 생성</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE &lt;database_name&gt;;</span><br></pre></td></tr></table></figure>
+<h1 id="20-JOIN"><a href="#20-JOIN" class="headerlink" title="20. JOIN"></a>20. JOIN</h1><p>JOIN은 여러개의 테이블에서 데이터를 모아서 보여줄 때 사용됩니다. JOIN에는 INNER JOIN, LEFT<br>JOIN, RIGHT JOIN이 있습니다.</p>
+<p>MAKE TEST TABLE &amp; DATA</p>
+<h2 id="create-table-amp-data"><a href="#create-table-amp-data" class="headerlink" title="create table &amp; data"></a>create table &amp; data</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE user (</span><br><span class="line">user_id int(11) unsigned NOT NULL AUTO_INCREMENT,</span><br><span class="line">name varchar(30) DEFAULT NULL,</span><br><span class="line">PRIMARY KEY (user_id)</span><br><span class="line">) ENGINE&#x3D;InnoDB DEFAULT CHARSET&#x3D;utf8;</span><br><span class="line"></span><br><span class="line">CREATE TABLE addr (</span><br><span class="line">id int(11) unsigned NOT NULL AUTO_INCREMENT,</span><br><span class="line">addr varchar(30) DEFAULT NULL,</span><br><span class="line">user_id int(11) DEFAULT NULL,</span><br><span class="line">PRIMARY KEY (id)</span><br><span class="line">) ENGINE&#x3D;InnoDB DEFAULT CHARSET&#x3D;utf8;</span><br><span class="line"></span><br><span class="line">INSERT INTO user(name)</span><br><span class="line">VALUES (&quot;jin&quot;),</span><br><span class="line">(&quot;po&quot;),</span><br><span class="line">(&quot;alice&quot;),</span><br><span class="line">(&quot;petter&quot;);</span><br><span class="line"></span><br><span class="line">INSERT INTO addr(addr, user_id)</span><br><span class="line">VALUES (&quot;seoul&quot;, 1),</span><br><span class="line">(&quot;pusan&quot;, 2),</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">(&quot;deajeon&quot;, 3),</span><br><span class="line">(&quot;deagu&quot;, 5),</span><br><span class="line">(&quot;seoul&quot;, 6);</span><br></pre></td></tr></table></figure>
 
-<h2 id="test-데이터-베이스-생성"><a href="#test-데이터-베이스-생성" class="headerlink" title="test 데이터 베이스 생성"></a>test 데이터 베이스 생성</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE test;</span><br></pre></td></tr></table></figure>
+<h2 id="INNER-JOIN"><a href="#INNER-JOIN" class="headerlink" title="INNER JOIN"></a>INNER JOIN</h2><p>두 테이블 사이에 공통된 값이 없는 row는 출력하지 않는다.</p>
+<p>두 테이블을 합쳐 id, name, addr 출력</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT id, user.name, addr.addr</span><br><span class="line">FROM user</span><br><span class="line">JOIN addr</span><br><span class="line">ON user.user_id &#x3D; addr.user_id</span><br></pre></td></tr></table></figure>
 
-<h1 id="USE"><a href="#USE" class="headerlink" title="USE"></a>USE</h1><h2 id="test-데이터-베이스-선택"><a href="#test-데이터-베이스-선택" class="headerlink" title="test 데이터 베이스 선택"></a>test 데이터 베이스 선택</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">USE test;</span><br></pre></td></tr></table></figure>
+<p>world 데이터베이스에서 도시이름과 국가이름을 출력</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT city.name AS country_name, country.name AS city_name</span><br><span class="line">FROM city</span><br><span class="line">JOIN country</span><br><span class="line">ON city.CountryCode &#x3D; country.code</span><br></pre></td></tr></table></figure>
 
-<h2 id="현재-데이터-베이스-확인"><a href="#현재-데이터-베이스-확인" class="headerlink" title="현재 데이터 베이스 확인"></a>현재 데이터 베이스 확인</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT DATABASE()</span><br></pre></td></tr></table></figure>
+<p>아래와 같이 사용할수도 있다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT city.name AS country_name, country.name AS city_name</span><br><span class="line">FROM city, country</span><br><span class="line">WHERE city.CountryCode &#x3D; country.code</span><br></pre></td></tr></table></figure>
 
-<h2 id="테이블-생성"><a href="#테이블-생성" class="headerlink" title="테이블 생성"></a>테이블 생성</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE &lt;table_name&gt; (</span><br><span class="line">column_name_1 column_data_type_1 column_constraint_1,</span><br><span class="line">column_name_2 column_data_type_2 column_constraint_2,</span><br><span class="line">...</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h2 id="LEFT-JOIN"><a href="#LEFT-JOIN" class="headerlink" title="LEFT JOIN"></a>LEFT JOIN</h2><p>왼쪽 테이블을 기준으로 왼쪽 테이블의 모든 데이터가 출력되고 매핑되는 키값이 없으면 NULL로 출력된<br>다.</p>
+<p>두 테이블을 합쳐 id, name, addr 출력</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT id, user.name, addr.addr</span><br><span class="line">FROM user</span><br><span class="line">LEFT JOIN addr</span><br><span class="line">ON user.user_id &#x3D; addr.user_id</span><br></pre></td></tr></table></figure>
 
-<h2 id="제약조건이-없는-user1-테이블-생성"><a href="#제약조건이-없는-user1-테이블-생성" class="headerlink" title="제약조건이 없는 user1 테이블 생성"></a>제약조건이 없는 user1 테이블 생성</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE user1(</span><br><span class="line">    user_id INT,</span><br><span class="line">    name Varchar(20),</span><br><span class="line">    email Varchar(30),</span><br><span class="line">    age INT(3),</span><br><span class="line">    rdate DATE</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h2 id="RIGHT-JOIN"><a href="#RIGHT-JOIN" class="headerlink" title="RIGHT JOIN"></a>RIGHT JOIN</h2><p>오른쪽 테이블을 기준으로 왼쪽 테이블의 모든 데이터가 출력되고 매핑되는 키값이 없으면 NULL로 출력<br>된다.</p>
+<p>두 테이블을 합쳐 id, name, addr 출력</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT id, user.name, addr.addr</span><br><span class="line">FROM user</span><br><span class="line">RIGHT JOIN addr</span><br><span class="line">ON user.user_id &#x3D; addr.user_id</span><br></pre></td></tr></table></figure>
 
-<h2 id="제약조건이-있는-user2-테이블-생성"><a href="#제약조건이-있는-user2-테이블-생성" class="headerlink" title="제약조건이 있는 user2 테이블 생성"></a>제약조건이 있는 user2 테이블 생성</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE user2(</span><br><span class="line">    user_id INT PRIMARY KEY AUTO_INCREMENT,</span><br><span class="line">    name Varchar(20) NOT NULL,</span><br><span class="line">    email Varchar(30) UNIQUE NOT NULL,</span><br><span class="line">    age INT(3) DEFAULT &#39;30&#39;,</span><br><span class="line">    rdate TIMESTAMP</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<h1 id="ALTER"><a href="#ALTER" class="headerlink" title="ALTER"></a>ALTER</h1><h2 id="Database"><a href="#Database" class="headerlink" title="Database"></a>Database</h2><h2 id="사용중인-데이터베이스의-인코딩-방식-확인"><a href="#사용중인-데이터베이스의-인코딩-방식-확인" class="headerlink" title="사용중인 데이터베이스의 인코딩 방식 확인"></a>사용중인 데이터베이스의 인코딩 방식 확인</h2><p>SHOW VARIABLES LIKE “character_set_database”</p>
-<h2 id="test-데이터-베이스의-문자열-인코딩을-utf8으로-변경"><a href="#test-데이터-베이스의-문자열-인코딩을-utf8으로-변경" class="headerlink" title="test 데이터 베이스의 문자열 인코딩을 utf8으로 변경"></a>test 데이터 베이스의 문자열 인코딩을 utf8으로 변경</h2><p>ALTER DATABASE world CHARACTER SET = ascii</p>
-<p>ALTER DATABASE world CHARACTER SET = utf8</p>
-<h2 id="사용중인-데이터베이스의-인코딩-방식-확인-1"><a href="#사용중인-데이터베이스의-인코딩-방식-확인-1" class="headerlink" title="사용중인 데이터베이스의 인코딩 방식 확인"></a>사용중인 데이터베이스의 인코딩 방식 확인</h2><p>SHOW VARIABLES LIKE “character_set_database”</p>
-<h2 id="Table"><a href="#Table" class="headerlink" title="Table"></a>Table</h2><h2 id="ALTER를-이용하여-Table의-컬럼을-추가하거나-삭제하거나-수정할수-있습니다"><a href="#ALTER를-이용하여-Table의-컬럼을-추가하거나-삭제하거나-수정할수-있습니다" class="headerlink" title="ALTER를 이용하여 Table의 컬럼을 추가하거나 삭제하거나 수정할수 있습니다."></a>ALTER를 이용하여 Table의 컬럼을 추가하거나 삭제하거나 수정할수 있습니다.</h2><h1 id="ADD"><a href="#ADD" class="headerlink" title="ADD"></a>ADD</h1><h2 id="user2-테이블에-TEXT-데이터-타입을-갖는-tmp-컬럼을-추가"><a href="#user2-테이블에-TEXT-데이터-타입을-갖는-tmp-컬럼을-추가" class="headerlink" title="user2 테이블에 TEXT 데이터 타입을 갖는 tmp 컬럼을 추가"></a>user2 테이블에 TEXT 데이터 타입을 갖는 tmp 컬럼을 추가</h2><p>ALTER TABLE user2 ADD tmp TEXT</p>
-<h1 id="MODIFY"><a href="#MODIFY" class="headerlink" title="MODIFY"></a>MODIFY</h1><h2 id="user2-테이블에-INT-데이터-타입을-갖는-tmp-컬럼으로-수정"><a href="#user2-테이블에-INT-데이터-타입을-갖는-tmp-컬럼으로-수정" class="headerlink" title="user2 테이블에 INT 데이터 타입을 갖는 tmp 컬럼으로 수정"></a>user2 테이블에 INT 데이터 타입을 갖는 tmp 컬럼으로 수정</h2><p>ALTER TABLE user2 MODIFY COLUMN tmp INT</p>
-<h2 id="DROP"><a href="#DROP" class="headerlink" title="DROP"></a>DROP</h2><h2 id="user2-테이블의-tmp-컬럼을-삭제"><a href="#user2-테이블의-tmp-컬럼을-삭제" class="headerlink" title="user2 테이블의 tmp 컬럼을 삭제"></a>user2 테이블의 tmp 컬럼을 삭제</h2><p>ALTER TABLE user2 DROP tmp</p>
-<h1 id="DROP-1"><a href="#DROP-1" class="headerlink" title="DROP"></a>DROP</h1><p>DATABASE</p>
-<h2 id="tmp-데이터-베이스-생성"><a href="#tmp-데이터-베이스-생성" class="headerlink" title="tmp 데이터 베이스 생성"></a>tmp 데이터 베이스 생성</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE tmp;</span><br><span class="line">SHOW DATABASES;</span><br></pre></td></tr></table></figure>
-
-<h2 id="tmp-데이터-베이스-삭제"><a href="#tmp-데이터-베이스-삭제" class="headerlink" title="tmp 데이터 베이스 삭제"></a>tmp 데이터 베이스 삭제</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DROP DATABASE tmp;</span><br><span class="line">SHOW DATABASES;</span><br></pre></td></tr></table></figure>
-
-<h2 id="TABLE"><a href="#TABLE" class="headerlink" title="TABLE"></a>TABLE</h2><h2 id="tmp-데이터-베이스-생성-1"><a href="#tmp-데이터-베이스-생성-1" class="headerlink" title="tmp 데이터 베이스 생성"></a>tmp 데이터 베이스 생성</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE tmp;</span><br></pre></td></tr></table></figure>
-
-<h2 id="tmp-데이터-베이스-선택"><a href="#tmp-데이터-베이스-선택" class="headerlink" title="tmp 데이터 베이스 선택"></a>tmp 데이터 베이스 선택</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">USE tmp;</span><br></pre></td></tr></table></figure>
-
-<h2 id="tmp-테이블-생성"><a href="#tmp-테이블-생성" class="headerlink" title="tmp 테이블 생성"></a>tmp 테이블 생성</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE tmp( id INT );</span><br></pre></td></tr></table></figure>
-
-<h2 id="tmp-테이블-삭제"><a href="#tmp-테이블-삭제" class="headerlink" title="tmp 테이블 삭제"></a>tmp 테이블 삭제</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP TABLE tmp;</span><br></pre></td></tr></table></figure>
-
-<h1 id="13-DATA-TYPE"><a href="#13-DATA-TYPE" class="headerlink" title="13. DATA TYPE"></a>13. DATA TYPE</h1><p>데이터 베이스의 테이블을 생성할때 각 컬럼은 데이터 타입을 가집니다.</p>
-<p>reference : <a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/data-types.html">https://dev.mysql.com/doc/refman/5.7/en/data-types.html</a></p>
-<h2 id="Numberic"><a href="#Numberic" class="headerlink" title="Numberic"></a>Numberic</h2><p>reference : <a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/numeric-types.html">https://dev.mysql.com/doc/refman/5.7/en/numeric-types.html</a></p>
-<p>정수 타입 ( integer types )</p>
-<p>실수 (floating-point types)</p>
-<p>소수점을 나타내기 위한 데이터 타입으로 아래의 두가지 데이터 타입이 있습니다. 두가지의 데이터 타입<br>은 데이터 저장공간의 차이가 있습니다.</p>
 <ul>
-<li>FLOAT (4byte)</li>
-<li>DOUBLE (8byte)</li>
+<li>inner join</li>
+<li>left join</li>
+<li>right join</li>
 </ul>
-<p>또한 아래와 같이 고정 소수점 타입으로도 사용이 가능합니다.</p>
+<h2 id="JOIN과-DISDINCT의-사용"><a href="#JOIN과-DISDINCT의-사용" class="headerlink" title="JOIN과 DISDINCT의 사용"></a>JOIN과 DISDINCT의 사용</h2><p>지역과 대륙별 사용하는 언어 출력</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT DISTINCT country.Region, country.continent, countrylanguage.Language</span><br><span class="line">FROM country</span><br><span class="line">JOIN countrylanguage</span><br><span class="line">ON countrylanguage.CountryCode &#x3D; country.Code</span><br></pre></td></tr></table></figure>
+
+<p>대륙과 지역별 사용하는 언어의 수 출력</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SELECT sub1.region, sub1.continent, count(\*) as count</span><br><span class="line">FROM (</span><br><span class="line">SELECT DISTINCT country.Region, country.continent, countrylanguage.Language</span><br><span class="line">FROM country</span><br><span class="line">JOIN countrylanguage</span><br><span class="line">ON countrylanguage.CountryCode &#x3D; country.Code</span><br><span class="line">) AS sub1</span><br><span class="line">GROUP BY sub1.region, sub1.continent</span><br></pre></td></tr></table></figure>
+
+<h2 id="테이블-세개-조인하기"><a href="#테이블-세개-조인하기" class="headerlink" title="테이블 세개 조인하기"></a>테이블 세개 조인하기</h2><p>국가별, 도시별, 언어의 사용율</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">SELECT country.name as country_name, city.name as city_name,</span><br><span class="line">countrylanguage.language, countrylanguage.percentage</span><br><span class="line">FROM country</span><br><span class="line">JOIN city</span><br><span class="line">ON country.code &#x3D; city.countrycode</span><br><span class="line">JOIN countrylanguage</span><br><span class="line">ON country.code &#x3D; countrylanguage.countrycode</span><br><span class="line"></span><br><span class="line">SELECT country.name as country_name, city.name as city_name,</span><br><span class="line">countrylanguage.language, countrylanguage.percentage</span><br><span class="line">FROM country, city, countrylanguage</span><br><span class="line">WHERE country.code &#x3D; city.countrycode and country.code &#x3D; countrylanguage.countrycode</span><br></pre></td></tr></table></figure>
+
+<h1 id="21-UNION"><a href="#21-UNION" class="headerlink" title="21. UNION"></a>21. UNION</h1><p>UNION은 SELECT 문의 결과 데이터를 하나로 합쳐서 출력합니다. 컬럼의 갯수와 타입, 순서가 같아야<br>합니다.</p>
+<p>UNION은 자동으로 distinct를 하여 중복을 제거해 줍니다. 중복제거를 안하고 컬럼 데이터를 합치고 싶<br>으면 UNION ALL을 사용합니다.</p>
+<p>또한 UNION을 이용하면 Full Outer Join을 구현할수 있습니다.</p>
+<h2 id="UNION"><a href="#UNION" class="headerlink" title="UNION"></a>UNION</h2><p>user 테이블의 name 컬럼과 addr 테이블의 addr 컬럼의 데이터를 하나로 함쳐서 출력</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT name</span><br><span class="line">FROM user</span><br><span class="line">UNION</span><br><span class="line">SELECT addr</span><br><span class="line">FROM addr</span><br></pre></td></tr></table></figure>
+
+<h2 id="UNION-ALL"><a href="#UNION-ALL" class="headerlink" title="UNION ALL"></a>UNION ALL</h2><p>중복데이터를 제거하지 않고 결과 데이터 합쳐서 출력</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT name</span><br><span class="line">FROM user</span><br><span class="line">UNION ALL</span><br><span class="line">SELECT addr</span><br><span class="line">FROM addr</span><br></pre></td></tr></table></figure>
+
+<p>FULL OUTER JOIN</p>
+<h2 id="union을-이용하여-full-outer-join-구현"><a href="#union을-이용하여-full-outer-join-구현" class="headerlink" title="union을 이용하여 full outer join 구현"></a>union을 이용하여 full outer join 구현</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">SELECT id, user.name, addr.addr</span><br><span class="line">FROM user</span><br><span class="line">LEFT JOIN addr</span><br><span class="line">ON user.user_id &#x3D; addr.user_id</span><br><span class="line">UNION</span><br><span class="line">SELECT id, user.name, addr.addr</span><br><span class="line">FROM user</span><br><span class="line">RIGHT JOIN addr</span><br><span class="line">ON user.user_id &#x3D; addr.user_id</span><br></pre></td></tr></table></figure>
+
+<h1 id="22-Sub-Query"><a href="#22-Sub-Query" class="headerlink" title="22. Sub Query"></a>22. Sub Query</h1><p>sub query는 query 문 안에 있는 query를 의미합니다. SELECT절 FROM절, WHERE 등에 사용이 가<br>능합니다.</p>
+<p>전체 나라수, 전체 도시수, 전체 언어수를 출력 ( SELECT 절에 사용 )</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">     (SELECT count(name) FROM city) AS total_city,</span><br><span class="line">     (SELECT count(name) FROM country) AS total_country,</span><br><span class="line">     (SELECT count(DISTINCT(Language)) FROM countrylanguage) AS total_language</span><br><span class="line">FROM DUAL</span><br></pre></td></tr></table></figure>
+
+<p>800만 이상되는 도시의 국가코드, 이름, 도시인구수를 출력 ( FROM 절에 사용 )</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">SELECT *</span><br><span class="line">FROM</span><br><span class="line">     (SELECT countrycode, name, population</span><br><span class="line">     FROM city</span><br><span class="line">     WHERE population &gt; 8000000) AS city</span><br><span class="line">JOIN</span><br><span class="line">     (SELECT code, name</span><br><span class="line">     FROM country) AS country</span><br><span class="line">ON city.countrycode &#x3D; country.code</span><br></pre></td></tr></table></figure>
+
+<p>800만 이상 도시의 국가코드, 국가이름, 대통령이름을 출력( WHERE 절에 사용 )</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT code, name, HeadOfState</span><br><span class="line">FROM country</span><br><span class="line">WHERE code IN (</span><br><span class="line">SELECT DISTINCT(countrycode) FROM city WHERE population &gt; 8000000</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h1 id="23-VIEW"><a href="#23-VIEW" class="headerlink" title="23. VIEW"></a>23. VIEW</h1><p>가상 테이블로 특 정수로 데이터만 보고자 할때 사용합니다. 실제 데이터를 저장하고 있지는 않습니다. 한<br>마디로 특정 컬럼의 데이터를 보여주는 역할만 합니다. 뷰를 사용 함으로 쿼리를 더 단순하게 만들수 있습<br>니다. 한번 생성된 뷰는 수정이 불가능 하며 인덱스설정이 불가능 합니다.</p>
+<h2 id="8-1-syntax"><a href="#8-1-syntax" class="headerlink" title="8.1 syntax"></a>8.1 syntax</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CREATE VIEW &lt;뷰이름&gt; AS</span><br><span class="line">(QUERY)</span><br></pre></td></tr></table></figure>
+
+<h2 id="8-2-example"><a href="#8-2-example" class="headerlink" title="8.2 example"></a>8.2 example</h2><p>국가코드와 국가이름이 있는 뷰 생성</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE VIEW code_name AS</span><br><span class="line">SELECT code, name</span><br><span class="line">FROM country</span><br></pre></td></tr></table></figure>
+
+<p>city 테이블에 국가 이름 추가</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT \*</span><br><span class="line">FROM city</span><br><span class="line">JOIN code_name</span><br><span class="line">ON city.countrycode &#x3D; code_name.code</span><br></pre></td></tr></table></figure>
+
+<h1 id="24-INDEX"><a href="#24-INDEX" class="headerlink" title="24. INDEX"></a>24. INDEX</h1><p>테이블에서 데이터를 검색할때 빠르게 찾을수 있도록 해주는 기능입니다.</p>
 <ul>
-<li>FLOAT(M,D)</li>
-<li>DOUBLE(M,D)</li>
+<li><p>장점</p>
+<ul>
+<li>검색속도가 빨라짐</li>
 </ul>
-<h2 id="Date-amp-Time"><a href="#Date-amp-Time" class="headerlink" title="Date &amp; Time"></a>Date &amp; Time</h2><p>reference : <a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-types.html">https://dev.mysql.com/doc/refman/5.7/en/date-and-time-types.html</a></p>
-<ul>
-<li>DATE</li>
-</ul>
-<p>DATE는 날짜를 저장하는 데이터 타입이며, 기본 포멧은 “년-월-일” 입니다.</p>
-<ul>
-<li>DATETIME</li>
-</ul>
-<p>DATETIME은 날짜와 시간을 저장하는 데이터 타입이며, 기본 포멧은 “년-월-일 시:분:초” 입니다.</p>
-<ul>
-<li>TIMESTAME</li>
-</ul>
-<p>TIMESTAME는 날짜와 시간을 저장하는 데이터 타입이며, DATETIME과 다른점은 날짜를 입력하지 않<br>으면 현재 날짜와 시간을 자동으로 저장할수 있는 특징이 있습니다.</p>
-<ul>
-<li>TIME</li>
-</ul>
-<p>TIME은 시간을 저장하는 데이터 타입이며, 기본 포멧은 “시:분:초” 입니다.</p>
-<ul>
-<li>YEAR</li>
-</ul>
-<p>YEAR는 연도를 저장할수 있는 데이터 타입입니다.<br>YEAR(2)는 2자리의 연도를 저장할수 있으며 YEAR(4)는 4자리의 연도를 저장할수 있습니다.</p>
-<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><p>reference<br><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-types.html">https://dev.mysql.com/doc/refman/5.7/en/string-types.html</a></p>
-<h2 id="CHAR-amp-VARCHAR"><a href="#CHAR-amp-VARCHAR" class="headerlink" title="CHAR &amp; VARCHAR"></a>CHAR &amp; VARCHAR</h2><h2 id="TEXT"><a href="#TEXT" class="headerlink" title="TEXT"></a>TEXT</h2><p>CHAR와 VARCHAR는 대체로 크기가 작은 문자열을 저장할때 사용되며 크기가 큰 문자열을 저장할 때<br>는 TEXT를 사용합니다. TEXT의 타입에 따라서 아래와 같이 크기를 가집니다.</p>
-<h1 id="14-Constraint-제약조건"><a href="#14-Constraint-제약조건" class="headerlink" title="14. Constraint : 제약조건"></a>14. Constraint : 제약조건</h1><p>데이터 베이스의 테이블을 생성할때 각 컬럼은 각각의 제약조건을 갖습니다.</p>
-<ul>
-<li><p>NOT NULL<br>NULL 값 (비어있는 값)을 저장할수 없습니다.</p>
 </li>
-<li><p>UNIQUE<br>같은 값을 저장할수 없습니다.</p>
+<li><p>단점</p>
+<ul>
+<li>저장공간을 10% 정도 더 많이 차지</li>
+<li>INSERT, DELETE, UPDATE 할때 속도가 느려짐</li>
+</ul>
 </li>
-<li><p>PRIMARY KEY<br>NOT NULL과 UNIQUE 의 제약조건을 동시에 만족해야 합니다. 그러므로 컬럼에 비어 있는 값과 동일한<br>값을 저장할수 없습니다. 하나의 테이블에 하나의 컬럼만 조건을 설정할수 있습니다.</p>
+<li><p>사용법</p>
+<ul>
+<li>SELECT시 WHERE 절에 들어가는 컬럼을 Index로 설정하면 좋다.</li>
+</ul>
 </li>
-<li><p>FOREIGN KEY<br>다른 테이블과 연결되는 값이 저장됩니다.</p>
-</li>
-<li><p>DEFAULT<br>데이터를 저장할때 해당 컬럼에 별도의 저장값이 없으면 DEFAULT로 설정된 값이 저장됩니다.</p>
-</li>
-<li><p>AUTO_INCREMENT<br>주로 테이블의 PRIMARY KEY 데이터를 저장할때 자동으로 숫자를 1씩 증가시켜 주는 기능으로 사용합<br>니다.</p>
+<li><p>내부 작동 원리 (B-Tree) - 루트노드와 리프노드의 계층적 구조로 루트노드를 이용하여 리프노드에서의 데이터를 빠르게 찾을수 있<br>는 자료구조 알고리즘.</p>
 </li>
 </ul>
-<h1 id="15-INSERT"><a href="#15-INSERT" class="headerlink" title="15. INSERT"></a>15. INSERT</h1><p>테이블 이름 뒤에 오는 컬럼이름은 생략이 가능하며 대신에 VALUES 뒤에 value 값이 순서대로 와야 합<br>니다.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO &lt;table_name&gt;(&lt;column_name_1&gt;, &lt;column_name_2&gt;, ...)</span><br><span class="line">VALUES(&lt;value_1&gt;, &lt;value_2&gt;, ...)</span><br></pre></td></tr></table></figure>
+<p>employees 데이터 베이스에서 실행</p>
+<p>실행계획을 확인하여 인덱스를 사용하는지 확인</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">EXPLAIN</span><br><span class="line">SELECT \*</span><br><span class="line">FROM salaries</span><br><span class="line">WHERE from_date &lt; &quot;1986-01-01&quot;</span><br><span class="line"></span><br><span class="line">EXPLAIN</span><br><span class="line">SELECT \*</span><br><span class="line">FROM salaries</span><br><span class="line">WHERE to_date &lt; &quot;1986-01-01&quot;</span><br></pre></td></tr></table></figure>
 
-<h2 id="test-데이터-베이스-선택-1"><a href="#test-데이터-베이스-선택-1" class="headerlink" title="test 데이터 베이스 선택"></a>test 데이터 베이스 선택</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sql&gt; USE test;</span><br></pre></td></tr></table></figure>
+<p>인덱스 확인</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW INDEX FROM salaries;</span><br></pre></td></tr></table></figure>
 
-<p>user1 테이블에 user_id, name, email, age, rdate를 입력</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO user1(user_id, name, email, age, rdate)</span><br><span class="line">VALUES (1, &quot;jin&quot;, &quot;pdj@gmail.com&quot;, 30, now()),</span><br><span class="line">       (2, &quot;peter&quot;, &quot;peter@daum.net&quot;, 33, &#x27;2017-02-20&#x27;),</span><br><span class="line">       (3, &quot;alice&quot;, &quot;alice@naver.com&quot;, 23, &#x27;2018-01-05&#x27;),</span><br><span class="line">       (4, &quot;po&quot;, &quot;po@gmail.com&quot;, 43, &#x27;2002-09-16&#x27;),</span><br><span class="line">       (5, &quot;andy&quot;, &quot;andy@gmail.com&quot;, 17, &#x27;2016-04-28&#x27;),</span><br><span class="line">       (6, &quot;jin&quot;, &quot;jin1224@gmail.com&quot;, 33, &#x27;2013-09-02&#x27;);</span><br></pre></td></tr></table></figure>
+<p>인덱스 생성</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE INDEX fdate</span><br><span class="line">ON salaries (from_date)</span><br><span class="line"></span><br><span class="line">CREATE INDEX tdate</span><br><span class="line">ON salaries (to_date)</span><br></pre></td></tr></table></figure>
 
-<h2 id="city-2-테이블-생성"><a href="#city-2-테이블-생성" class="headerlink" title="city_2 테이블 생성"></a>city_2 테이블 생성</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE city_2 (</span><br><span class="line">    Name VARCHAR(50),</span><br><span class="line">    CountryCode CHAR(3),</span><br><span class="line">    District VARCHAR(50),</span><br><span class="line">    Population INT</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>여러개의 컬럼을 가지는 인덱스 생성도 가능</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CREATE INDEX ftdate</span><br><span class="line">ON salaries (from_date, to_date)</span><br></pre></td></tr></table></figure>
 
-<h2 id="select-절에서-나온-결과데이터를-Insert"><a href="#select-절에서-나온-결과데이터를-Insert" class="headerlink" title="select 절에서 나온 결과데이터를 Insert"></a>select 절에서 나온 결과데이터를 Insert</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO city_2</span><br><span class="line">SELECT Name, CountryCode, District, Population</span><br><span class="line">FROM city</span><br><span class="line">WHERE Population &gt; 8000000;</span><br></pre></td></tr></table></figure>
+<p>인덱스 삭제</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">DROP INDEX fdate</span><br><span class="line">ON salaries</span><br><span class="line"></span><br><span class="line">DROP INDEX tdate</span><br><span class="line">ON salaries</span><br><span class="line"></span><br><span class="line">DROP INDEX ftdate</span><br><span class="line">ON salaries</span><br></pre></td></tr></table></figure>
 
-<h1 id="16-UPDATE-SET"><a href="#16-UPDATE-SET" class="headerlink" title="16. UPDATE SET"></a>16. UPDATE SET</h1><p>업데이트시에는 항상 select-where로 변경할 데이터를 확인하고 update 해줘야 실수를 줄일수<br>있습니다. 또한 limit도 함께 사용해주면 좋습니다.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">UPDATE &lt;table_name&gt;</span><br><span class="line">SET &lt;column_name_1&gt; = &lt;value_1&gt;, &lt;column_name_2&gt; = &lt;value_2&gt;,</span><br><span class="line">WHERE &lt;condition&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="jin-이름을-가지고-있는-사람의-나이를-20-이메일을-112-x64-106-x40-x64-x61-x75-x6d-46-x6e-x65-x74-으로-변경"><a href="#jin-이름을-가지고-있는-사람의-나이를-20-이메일을-112-x64-106-x40-x64-x61-x75-x6d-46-x6e-x65-x74-으로-변경" class="headerlink" title="jin 이름을 가지고 있는 사람의 나이를 20, 이메일을 &#112;&#x64;&#106;&#x40;&#x64;&#x61;&#x75;&#x6d;&#46;&#x6e;&#x65;&#x74;으로 변경"></a>jin 이름을 가지고 있는 사람의 나이를 20, 이메일을 <a href="mailto:&#112;&#x64;&#106;&#x40;&#x64;&#x61;&#x75;&#x6d;&#46;&#x6e;&#x65;&#x74;">&#112;&#x64;&#106;&#x40;&#x64;&#x61;&#x75;&#x6d;&#46;&#x6e;&#x65;&#x74;</a>으로 변경</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">sql&gt;</span><span class="bash"> UPDATE user1</span></span><br><span class="line">     SET age=20, email=&quot;pdj@daum.net&quot;</span><br><span class="line">     WHERE name=&quot;jin&quot;</span><br></pre></td></tr></table></figure>
-
-<h1 id="17-DELETE-DROP-TRUNCATE"><a href="#17-DELETE-DROP-TRUNCATE" class="headerlink" title="17. DELETE, DROP, TRUNCATE"></a>17. DELETE, DROP, TRUNCATE</h1><p>조건을 설정하여 데이터를 삭제할수 있습니다.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DELETE FROM &lt;table_name&gt;</span><br><span class="line">WHERE &lt;condition&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="2016-01-01-이전-데이터-삭제-DML"><a href="#2016-01-01-이전-데이터-삭제-DML" class="headerlink" title="2016-01-01 이전 데이터 삭제 (DML)"></a>2016-01-01 이전 데이터 삭제 (DML)</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">sql&gt;</span><span class="bash"> DELETE FROM user1</span></span><br><span class="line">WHERE rdate &lt; &quot;2016-01-01&quot;</span><br></pre></td></tr></table></figure>
-
-<h2 id="테이블-구조를-남기고-모든-데이터를-삭제-DLL"><a href="#테이블-구조를-남기고-모든-데이터를-삭제-DLL" class="headerlink" title="테이블 구조를 남기고 모든 데이터를 삭제 (DLL)"></a>테이블 구조를 남기고 모든 데이터를 삭제 (DLL)</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">sql&gt;</span><span class="bash"> TRUNCATE FROM user1</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="테이블-전체를-모두-삭제-DLL"><a href="#테이블-전체를-모두-삭제-DLL" class="headerlink" title="테이블 전체를 모두 삭제 (DLL)"></a>테이블 전체를 모두 삭제 (DLL)</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">sql&gt;</span><span class="bash"> DROP FROM user1</span></span><br></pre></td></tr></table></figure>
+<p>여러개의 컬럼을 조건으로 WHERE절에 사용하는 경우 인덱스 확인</p>
+<p>인덱스가 하나의 컬럼에 있을때 보다 둘다 있을때가 더 빠름</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">EXPLAIN</span><br><span class="line">SELECT \*</span><br><span class="line">FROM salaries</span><br><span class="line">WHERE from_date &lt; &quot;1986-01-01&quot; AND to_date &lt; &quot;1986-01-01&quot;</span><br></pre></td></tr></table></figure>
 
         </div>
         <footer class="article-footer">
@@ -428,7 +434,7 @@
             "@type": "Person",
             "name": "Jaebok Lee"
         },
-        "headline": "MySQL 2",
+        "headline": "MySQL 3",
         "image": "https://tezla-lee.github.io",
         "keywords": "",
         "genre": "",
@@ -436,18 +442,17 @@
         "dateCreated": "2020-10-26",
         "dateModified": "2020-10-26",
         "url": "https://tezla-lee.github.io/2020/10/26/20201026-MySQL3/",
-        "description": "MySQL 2Index
-GROUP BY, HAVING
-CREATE USE ALTER DROP
-DATA TYPE
-Constraint : 제약조건
-INSERT
-UPDATE SET
-DELETE TRUNCATE
+        "description": "MySQL 3Index
+Functions 1 (CONCAT, CEIL, ROUND, TRUNCATE, DATE_FORMAT)
+Functions 2 (IF, IFNULL, CASE)
+JOIN
+UNION
+Sub Query
+VIEW
+INDEX
 
-11. GRUOP BY HAVINGGROUP BY는 여러개의 동일한 데이터를 가지는 특정 컬럼을 합쳐주는 역할을 하는 명령입니다.
-SQL에는 아래와 같은",
-        "wordCount": 1871
+18. Functions 1 (CONCAT, CEIL, ROUND, TRUNCATE, DATE_FORMAT)CEIL, ",
+        "wordCount": 1538
     }
 </script>
 
@@ -565,7 +570,7 @@ SQL에는 아래와 같은",
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
-                            <p class="item-title"><a href="/2020/10/26/20201026-MySQL3/" class="title">MySQL 2</a></p>
+                            <p class="item-title"><a href="/2020/10/26/20201026-MySQL3/" class="title">MySQL 3</a></p>
                             <p class="item-date"><time datetime="2020-10-26T11:28:13.013Z" itemprop="datePublished">2020-10-26</time></p>
                         </div>
                     </li>

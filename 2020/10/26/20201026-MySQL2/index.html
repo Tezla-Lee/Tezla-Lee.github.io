@@ -20,7 +20,7 @@
 <meta property="og:description" content="MySQL 2Index GROUP BY, HAVING CREATE USE ALTER DROP DATA TYPE Constraint : 제약조건 INSERT UPDATE SET DELETE TRUNCATE  11. GRUOP BY HAVINGGROUP BY는 여러개의 동일한 데이터를 가지는 특정 컬럼을 합쳐주는 역할을 하는 명령입니다. SQL에는 아래와 같은">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-10-26T11:07:55.510Z">
-<meta property="article:modified_time" content="2020-10-26T11:33:37.462Z">
+<meta property="article:modified_time" content="2020-10-26T11:36:37.723Z">
 <meta property="article:author" content="Jaebok Lee">
 <meta name="twitter:card" content="summary">
     
@@ -180,7 +180,7 @@
 <div class="article-date">
   <i class="fa fa-calendar-plus-o"></i>
   <a href="/2020/10/26/20201026-MySQL2/" class="article-date">
-     <time datetime="2020-10-26T11:33:37.462Z" itemprop="dateModified">2020-10-26</time>
+     <time datetime="2020-10-26T11:36:37.723Z" itemprop="dateModified">2020-10-26</time>
   </a>
 </div>
 
@@ -297,7 +297,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DROP DATABASE tmp;</span><br><span class="line">SHOW DATABASES;</span><br></pre></td></tr></table></figure>
 
 <p>TABLE</p>
-<p>##tmp 데이터 베이스 생성</p>
+<p>tmp 데이터 베이스 생성</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE tmp;</span><br></pre></td></tr></table></figure>
 
 <p>tmp 데이터 베이스 선택</p>
@@ -345,7 +345,7 @@
 <li>YEAR</li>
 </ul>
 <p>YEAR는 연도를 저장할수 있는 데이터 타입입니다.<br>YEAR(2)는 2자리의 연도를 저장할수 있으며 YEAR(4)는 4자리의 연도를 저장할수 있습니다.</p>
-<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><p>reference<br><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-types.html">https://dev.mysql.com/doc/refman/5.7/en/string-types.html</a></p>
+<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><p>reference : <a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/string-types.html">https://dev.mysql.com/doc/refman/5.7/en/string-types.html</a></p>
 <h2 id="CHAR-amp-VARCHAR"><a href="#CHAR-amp-VARCHAR" class="headerlink" title="CHAR &amp; VARCHAR"></a>CHAR &amp; VARCHAR</h2><h2 id="TEXT"><a href="#TEXT" class="headerlink" title="TEXT"></a>TEXT</h2><p>CHAR와 VARCHAR는 대체로 크기가 작은 문자열을 저장할때 사용되며 크기가 큰 문자열을 저장할 때<br>는 TEXT를 사용합니다. TEXT의 타입에 따라서 아래와 같이 크기를 가집니다.</p>
 <h1 id="14-Constraint-제약조건"><a href="#14-Constraint-제약조건" class="headerlink" title="14. Constraint : 제약조건"></a>14. Constraint : 제약조건</h1><p>데이터 베이스의 테이블을 생성할때 각 컬럼은 각각의 제약조건을 갖습니다.</p>
 <ul>
@@ -379,7 +379,7 @@
 <h1 id="16-UPDATE-SET"><a href="#16-UPDATE-SET" class="headerlink" title="16. UPDATE SET"></a>16. UPDATE SET</h1><p>업데이트시에는 항상 select-where로 변경할 데이터를 확인하고 update 해줘야 실수를 줄일수<br>있습니다. 또한 limit도 함께 사용해주면 좋습니다.</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">UPDATE &lt;table_name&gt;</span><br><span class="line">SET &lt;column_name_1&gt; = &lt;value_1&gt;, &lt;column_name_2&gt; = &lt;value_2&gt;,</span><br><span class="line">WHERE &lt;condition&gt;</span><br></pre></td></tr></table></figure>
 
-<p>jin 이름을 가지고 있는 사람의 나이를 20, 이메일을 <a href="mailto:&#112;&#100;&#106;&#x40;&#100;&#97;&#117;&#109;&#46;&#110;&#101;&#x74;">&#112;&#100;&#106;&#x40;&#100;&#97;&#117;&#109;&#46;&#110;&#101;&#x74;</a>으로 변경</p>
+<p>jin 이름을 가지고 있는 사람의 나이를 20, 이메일을 <a href="mailto:&#112;&#100;&#106;&#64;&#100;&#x61;&#117;&#x6d;&#46;&#110;&#x65;&#116;">&#112;&#100;&#106;&#64;&#100;&#x61;&#117;&#x6d;&#46;&#110;&#x65;&#116;</a>으로 변경</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">sql&gt;</span><span class="bash"> UPDATE user1</span></span><br><span class="line">     SET age=20, email=&quot;pdj@daum.net&quot;</span><br><span class="line">     WHERE name=&quot;jin&quot;</span><br></pre></td></tr></table></figure>
 
 <h1 id="17-DELETE-DROP-TRUNCATE"><a href="#17-DELETE-DROP-TRUNCATE" class="headerlink" title="17. DELETE, DROP, TRUNCATE"></a>17. DELETE, DROP, TRUNCATE</h1><p>조건을 설정하여 데이터를 삭제할수 있습니다.</p>
@@ -489,7 +489,7 @@ DELETE TRUNCATE
 
 11. GRUOP BY HAVINGGROUP BY는 여러개의 동일한 데이터를 가지는 특정 컬럼을 합쳐주는 역할을 하는 명령입니다.
 SQL에는 아래와 같은",
-        "wordCount": 1596
+        "wordCount": 1598
     }
 </script>
 
@@ -574,7 +574,7 @@ SQL에는 아래와 같은",
         <strong class="article-nav-caption">newer</strong>
         <p class="article-nav-title">
         
-            MySQL 2
+            MySQL 3
         
         </p>
         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
@@ -617,7 +617,7 @@ SQL에는 아래와 같은",
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
-                            <p class="item-title"><a href="/2020/10/26/20201026-MySQL3/" class="title">MySQL 2</a></p>
+                            <p class="item-title"><a href="/2020/10/26/20201026-MySQL3/" class="title">MySQL 3</a></p>
                             <p class="item-date"><time datetime="2020-10-26T11:28:13.013Z" itemprop="datePublished">2020-10-26</time></p>
                         </div>
                     </li>
