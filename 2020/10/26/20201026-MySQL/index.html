@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>MySQL 시작 | Tezla&#39;s Blog</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="" />
+    
+    <meta name="description" content="MySQL 시작Index 데이터 베이스의 개요 Mysql 설치 및 설정 샘플 데이터 추가 Mysql Workbench 사용법 데이터 베이스 모델링 SQL문의 종류 : DML DDL DCL SELECT FROM WHERE, IN, LIKE ORDER BY LIMIT GROUP BY, HAVING CREATE USE ALTER DROP DATA TYPE Con">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL 시작">
+<meta property="og:url" content="https://tezla-lee.github.io/2020/10/26/20201026-MySQL/index.html">
+<meta property="og:site_name" content="Tezla&#39;s Blog">
+<meta property="og:description" content="MySQL 시작Index 데이터 베이스의 개요 Mysql 설치 및 설정 샘플 데이터 추가 Mysql Workbench 사용법 데이터 베이스 모델링 SQL문의 종류 : DML DDL DCL SELECT FROM WHERE, IN, LIKE ORDER BY LIMIT GROUP BY, HAVING CREATE USE ALTER DROP DATA TYPE Con">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-26T09:57:41.149Z">
+<meta property="article:modified_time" content="2020-10-26T10:30:15.285Z">
+<meta property="article:author" content="Jaebok Lee">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/" title="Tezla&#39;s Blog" type="application/atom+xml" />
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    uncategorized
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-20201026-MySQL" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        MySQL 시작
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2020/10/26/20201026-MySQL/" class="article-date">
+       <time datetime="2020-10-26T09:57:41.149Z" itemprop="datePublished">2020-10-26</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2020/10/26/20201026-MySQL/" class="article-date">
+     <time datetime="2020-10-26T10:30:15.285Z" itemprop="dateModified">2020-10-26</time>
+  </a>
+</div>
+
+
+                
+
+                
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <h1 id="MySQL-시작"><a href="#MySQL-시작" class="headerlink" title="MySQL 시작"></a>MySQL 시작</h1><h2 id="Index"><a href="#Index" class="headerlink" title="Index"></a>Index</h2><ol>
+<li>데이터 베이스의 개요</li>
+<li>Mysql 설치 및 설정</li>
+<li>샘플 데이터 추가</li>
+<li>Mysql Workbench 사용법</li>
+<li>데이터 베이스 모델링</li>
+<li>SQL문의 종류 : DML DDL DCL</li>
+<li>SELECT FROM</li>
+<li>WHERE, IN, LIKE</li>
+<li>ORDER BY</li>
+<li>LIMIT</li>
+<li>GROUP BY, HAVING</li>
+<li>CREATE USE ALTER DROP</li>
+<li>DATA TYPE</li>
+<li>Constraint : 제약조건</li>
+<li>INSERT</li>
+<li>UPDATE SET</li>
+<li>DELETE TRUNCATE</li>
+<li>Functions 1 (CONCAT, CEIL, ROUND, TRUNCATE, DATE_FORMAT)</li>
+<li>Functions 2 (IF, IFNULL, CASE)</li>
+<li>JOIN</li>
+<li>UNION</li>
+<li>Sub Query</li>
+<li>VIEW</li>
+<li>INDEX</li>
+</ol>
+<h1 id="1-데이터-베이스의-개요"><a href="#1-데이터-베이스의-개요" class="headerlink" title="1. 데이터 베이스의 개요"></a>1. 데이터 베이스의 개요</h1><h2 id="DB-Database"><a href="#DB-Database" class="headerlink" title="DB : Database"></a>DB : Database</h2><pre><code>데이터를 통합하여 관리하는 데이터의 집합</code></pre>
+<h2 id="DBMS-Database-Management-System"><a href="#DBMS-Database-Management-System" class="headerlink" title="DBMS : Database Management System"></a>DBMS : Database Management System</h2><pre><code>데이터 베이스를 관리하는 미들웨어 시스템, 데이터 베이스 관리 시스템</code></pre>
+<h2 id="RDBMS-Relational-Database-Management-System"><a href="#RDBMS-Relational-Database-Management-System" class="headerlink" title="RDBMS : Relational Database Management System"></a>RDBMS : Relational Database Management System</h2><pre><code>Oracle, Mysql, Postgresql, Sqlite
+데이터의 테이블 사이에 키값으로 관계를 가지고 있는 데이터 베이스</code></pre>
+<h2 id="NoSQL"><a href="#NoSQL" class="headerlink" title="NoSQL"></a>NoSQL</h2><pre><code>Mongodb, Hbase, Cassandra
+데이터 테이블 사이의 관계가 없이 데이터를 저장하는 데이터 베이스
+데이터 사이의 관계가 없으므로 복잡성이 작고 많은 데이터의 저장이 가능</code></pre>
+<h2 id="MySQL의-특징"><a href="#MySQL의-특징" class="headerlink" title="MySQL의 특징"></a>MySQL의 특징</h2><pre><code>MySQL은 오픈소스이며 다중 사용자와 다중 스레드 지원
+다양한 운영체제에 다양한 프로그래밍 언어 지원
+표준 SQL을 사용
+작고 강력하며 가격이 저렴</code></pre>
+<p>Oracle pricing table - <a target="_blank" rel="noopener" href="http://www.oracle.com/us/corporate/pricing/technology-price-">http://www.oracle.com/us/corporate/pricing/technology-price-</a><br>list-070617.pdf</p>
+<h2 id="History"><a href="#History" class="headerlink" title="History"></a>History</h2><pre><code>1995 - MySQL AB사에 의해 첫 버전 발표
+2008 - 썬마이크로시스템이 MySQL AB 인수, 5.1 버전
+2009 - 오라클이 썬마이크로시스템 인수
+2018 - MySQL 8.0 버전 발표</code></pre>
+<h2 id="License"><a href="#License" class="headerlink" title="License"></a>License</h2><pre><code>MySQL을 포함하는 하드웨어나 소프트웨어 기타 장비를 판매하는 경우 라이센스 필요
+배포시 소스를 공개하면 무료이지만 소스공개를 원하지 않는 경우 사용라이센스 필요
+서비스에 이용하는건 무료로 가능</code></pre>
+<h1 id="2-Mysql-설치-및-설정"><a href="#2-Mysql-설치-및-설정" class="headerlink" title="2. Mysql 설치 및 설정"></a>2. Mysql 설치 및 설정</h1><ul>
+<li><p>AWS EC2 인스턴스에 Ubuntu OS에 MySQL 5.7.x 버전 설치</p>
+</li>
+<li><p>EC2 인스턴스 생성</p>
+<ul>
+<li>t2.micro</li>
+<li>Ubuntu 18.04 버전</li>
+<li>보안그룹에서 3306 포트 추가</li>
+</ul>
+</li>
+<li><p>EC2 인스턴스에 접속</p>
+</li>
+</ul>
+<h2 id="pem-파일-400-권한으로-변경"><a href="#pem-파일-400-권한으로-변경" class="headerlink" title="pem 파일 400 권한으로 변경"></a>pem 파일 400 권한으로 변경</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ssh -i ~/.ssh/rada.pem ubuntu@15.164.231.87</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="apt-get-업데이트"><a href="#apt-get-업데이트" class="headerlink" title="apt-get 업데이트"></a>apt-get 업데이트</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get update -y</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get upgrade -y</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="MySQL-Server-설치"><a href="#MySQL-Server-설치" class="headerlink" title="MySQL Server 설치"></a>MySQL Server 설치</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get install -y mysql-server mysql-client</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="MySQL-secure-설정"><a href="#MySQL-secure-설정" class="headerlink" title="MySQL secure 설정"></a>MySQL secure 설정</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo mysql_secure_installation</span></span><br><span class="line">Would you like to setup VALIDATE PASSWORD plugin? N</span><br><span class="line">New password: rada</span><br><span class="line">Re-enter new password: rada</span><br><span class="line">Remove anonymous users? Y</span><br><span class="line">Disallow root login remotely? N</span><br><span class="line">Remove test database and access to it? Y</span><br><span class="line">Reload privilege tables now? Y</span><br></pre></td></tr></table></figure>
+
+<h2 id="MySQL-패스워드-설정"><a href="#MySQL-패스워드-설정" class="headerlink" title="MySQL 패스워드 설정"></a>MySQL 패스워드 설정</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo mysql</span></span><br><span class="line">    mysql&gt; SELECT user,authentication_string,plugin,host FROM mysql.user;</span><br><span class="line">    mysql&gt; ALTER USER &#x27;root&#x27;@&#x27;localhost&#x27; IDENTIFIED WITH mysql_native_password</span><br><span class="line">            BY &#x27;rada&#x27;;</span><br><span class="line">    mysql&gt; FLUSH PRIVILEGES;</span><br><span class="line">    mysql&gt; SELECT user,authentication_string,plugin,host FROM mysql.user;</span><br><span class="line">    mysql&gt; exit</span><br></pre></td></tr></table></figure>
+
+<h2 id="설정한-패스워드를-입력하여-접속"><a href="#설정한-패스워드를-입력하여-접속" class="headerlink" title="설정한 패스워드를 입력하여 접속"></a>설정한 패스워드를 입력하여 접속</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mysql -u root -p</span><br><span class="line">Enter password: rada</span><br></pre></td></tr></table></figure>
+
+<h2 id="외부접속-설정"><a href="#외부접속-설정" class="headerlink" title="외부접속 설정"></a>외부접속 설정</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo vi /etc/mysql/mysql.conf.d/mysqld.cnf</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="bind-address를-127-0-0-1을-0-0-0-0-으로-변경"><a href="#bind-address를-127-0-0-1을-0-0-0-0-으로-변경" class="headerlink" title="bind-address를 127.0.0.1을 0.0.0.0 으로 변경"></a>bind-address를 127.0.0.1을 0.0.0.0 으로 변경</h2><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bind-address = <span class="number">0.0</span>.<span class="number">0.0</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="외부접속-패스워드-설정"><a href="#외부접속-패스워드-설정" class="headerlink" title="외부접속 패스워드 설정"></a>외부접속 패스워드 설정</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; grant all privileges on *.* to root@&#39;%&#39; identified by &#39;rada&#39;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="서버-시작-종료-상태-확인"><a href="#서버-시작-종료-상태-확인" class="headerlink" title="서버 시작 종료 상태 확인"></a>서버 시작 종료 상태 확인</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo systemctl start mysql.service</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo systemctl stop mysql.service</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo systemctl restart mysql.service</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo systemctl status mysql.service</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="설정-후-서버-재시작으로-설정-내용-적용"><a href="#설정-후-서버-재시작으로-설정-내용-적용" class="headerlink" title="설정 후 서버 재시작으로 설정 내용 적용"></a>설정 후 서버 재시작으로 설정 내용 적용</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo systemctl restart mysql.service</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="password-변경-rada로-패스워드를-변경하는-경우"><a href="#password-변경-rada로-패스워드를-변경하는-경우" class="headerlink" title="password 변경 : rada로 패스워드를 변경하는 경우"></a>password 변경 : rada로 패스워드를 변경하는 경우</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> ALTER USER <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED BY <span class="string">&#x27;rada&#x27;</span>;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="3-샘플-데이터-추가"><a href="#3-샘플-데이터-추가" class="headerlink" title="3. 샘플 데이터 추가"></a>3. 샘플 데이터 추가</h1><pre><code>World, Sakila 데이터 베이스 추가
+아래의 링크에서 world와 sakila 데이터 베이스 다운로드
+https://dev.mysql.com/doc/index-other.html</code></pre>
+<h2 id="서버로-sql-파일을-전송"><a href="#서버로-sql-파일을-전송" class="headerlink" title="서버로 sql 파일을 전송"></a>서버로 sql 파일을 전송</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> scp -i ~/.ssh/rada.pem ~/Desktop/sql/* ubuntu@15.164.231.87:~/</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="데이터-베이스-생성"><a href="#데이터-베이스-생성" class="headerlink" title="데이터 베이스 생성"></a>데이터 베이스 생성</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> mysql -u root -p</span></span><br><span class="line">    sql&gt; create database world;</span><br><span class="line">    sql&gt; create database sakila;</span><br><span class="line">    sql&gt; create database employees;</span><br><span class="line">    sql&gt; quit</span><br></pre></td></tr></table></figure>
+
+<h2 id="데이터-베이스에-데이터-추가"><a href="#데이터-베이스에-데이터-추가" class="headerlink" title="데이터 베이스에 데이터 추가"></a>데이터 베이스에 데이터 추가</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> mysql -u root -p world &lt; world.sql</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> mysql -u root -p sakila &lt; sakila-schema.sql</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> mysql -u root -p sakila &lt; sakila-data.sql</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> mysql -u root -p employees &lt; employees.sql</span></span><br></pre></td></tr></table></figure>
+
+<p>8</p>
+<h1 id="4-Mysql-Workbench-사용법"><a href="#4-Mysql-Workbench-사용법" class="headerlink" title="4. Mysql Workbench 사용법"></a>4. Mysql Workbench 사용법</h1><pre><code>Mysql Management Tool
+Workbench 다운로드 및 설치
+https://dev.mysql.com/downloads/workbench/
+
+Workbench를 이용한 접속
+
+Test Connection</code></pre>
+<h1 id="5-데이터-베이스-모델링"><a href="#5-데이터-베이스-모델링" class="headerlink" title="5. 데이터 베이스 모델링"></a>5. 데이터 베이스 모델링</h1><pre><code>데이터 베이스 모델링은 데이터 베이스에서의 테이블 구조를 미리 계획해서 작성하는 작업입니다. RDBMS는 테이블간에 유기적으로 연결되어 있기 때문에 모델링을 잘하는것이 중요합니다. 기본적으로 개념적 모델링, 논리적 모델링, 물리적 모델링 절차로 설계됩니다.</code></pre>
+<ul>
+<li><p>개념적 모델링 : 업무분석해서 핵심 데이터의 집합을 정의하는 과정</p>
+</li>
+<li><p>논리적 모델링 : 개념적 모델링을 상세화 하는 과정</p>
+</li>
+<li><p>물리적 모델링 : 논리적 모델링을 DBMS에 추가하기 위해 구체화 되는과정</p>
+</li>
+</ul>
+<h2 id="EER-다이어그램-생성"><a href="#EER-다이어그램-생성" class="headerlink" title="EER 다이어그램 생성"></a>EER 다이어그램 생성</h2><pre><code>File - New Model 선택
+이름 설정
+EER(Diagram) - ADD Diagram
+테이블 추가
+컬럼추가
+테이블 관계 연결
+모델링 파일을 실제 데이터 베이스에 연결
+File - Save Model 선택 후 저장 (test.mwb)</code></pre>
+<h2 id="EER-다이어그램-파일을-적용하기"><a href="#EER-다이어그램-파일을-적용하기" class="headerlink" title="EER 다이어그램 파일을 적용하기"></a>EER 다이어그램 파일을 적용하기</h2><pre><code>File - Open Model
+Database - Forward Engineer
+MySQL Server 연결정보를 선택하고 Continue 선택
+실행 쿼리에서 VISIABE 제거 후 실행 (버전에 따른 syntax 문제)</code></pre>
+<h2 id="데이터-베이스를-EER-다이어그램으로-변경"><a href="#데이터-베이스를-EER-다이어그램으로-변경" class="headerlink" title="데이터 베이스를 EER 다이어그램으로 변경"></a>데이터 베이스를 EER 다이어그램으로 변경</h2><pre><code>Database - Reverse Engineer</code></pre>
+<h3 id="관계선-의미"><a href="#관계선-의미" class="headerlink" title="관계선 의미"></a>관계선 의미</h3><pre><code>실선 : 식별관계 : 부모가 있어야 자식이 생성됨
+점선 : 비식별관계 : 부모가 없어도 자식이 생성됨</code></pre>
+<ul>
+<li>1:N - 없을수 있음</li>
+<li>1:1 - 1:1로 존재</li>
+<li>1:N - 1개는 존재</li>
+</ul>
+<h1 id="6-SQL문의-종류-DML-DDL-DCL"><a href="#6-SQL문의-종류-DML-DDL-DCL" class="headerlink" title="6. SQL문의 종류 : DML DDL DCL"></a>6. SQL문의 종류 : DML DDL DCL</h1><h2 id="SQL문의-종류"><a href="#SQL문의-종류" class="headerlink" title="SQL문의 종류"></a>SQL문의 종류</h2><ul>
+<li><p>DML<br>Data Manipulation Language<br>데이터 조작어<br>데이터 검색, 삽입, 수정, 삭제등에 사용<br>SELECT, INSERT, UPDATE, DELETE<br>트랜젝션이 발생하는 SQL문</p>
+</li>
+<li><p>DDL<br>Data Definition Language<br>데이터 정의어<br>데이터 베이스, 테이블, 뷰, 인덱스등의 데이터 베이스 개체를 생성, 삭제, 변경에 사용<br>CREATE, DROP, ALTER, TRUNCATE<br>실행 즉시 DB에 적용</p>
+</li>
+<li><p>DCL<br>Data Control Language<br>데이터 제어어<br>사용자의 권한을 부여하거나 빼앗을때 사용<br>GRUNT, REVORKE, DENY</p>
+</li>
+</ul>
+<h1 id="7-SELECT-FROM"><a href="#7-SELECT-FROM" class="headerlink" title="7. SELECT FROM"></a>7. SELECT FROM</h1><h2 id="데이터를-검색할때-사용되는-문법"><a href="#데이터를-검색할때-사용되는-문법" class="headerlink" title="데이터를 검색할때 사용되는 문법"></a>데이터를 검색할때 사용되는 문법</h2><h3 id="기본-포멧"><a href="#기본-포멧" class="headerlink" title="기본 포멧"></a>기본 포멧</h3><pre><code>SELECT &lt;column_name_1&gt;, &lt;column_name_2&gt;, ...
+FROM &lt;table_name&gt;</code></pre>
+<h2 id="SELECT-FROM"><a href="#SELECT-FROM" class="headerlink" title="SELECT FROM"></a>SELECT FROM</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SELECT *</span><br><span class="line">FROM world.country;</span><br><span class="line"></span><br><span class="line">USE world;</span><br><span class="line"></span><br><span class="line">SELECT code, name, population</span><br><span class="line">FROM country;</span><br></pre></td></tr></table></figure>
+
+<h2 id="WHERE-비교연산-논리연산"><a href="#WHERE-비교연산-논리연산" class="headerlink" title="WHERE : 비교연산, 논리연산"></a>WHERE : 비교연산, 논리연산</h2><h2 id="인구가-1억-이상인-국가-데이터-출력"><a href="#인구가-1억-이상인-국가-데이터-출력" class="headerlink" title="인구가 1억 이상인 국가 데이터 출력"></a>인구가 1억 이상인 국가 데이터 출력</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT code, name, population</span><br><span class="line">FROM country</span><br><span class="line">WHERE population &gt;&#x3D; 200000000;</span><br></pre></td></tr></table></figure>
+
+<h2 id="인구가-2억-3억인-국가를-출력"><a href="#인구가-2억-3억인-국가를-출력" class="headerlink" title="인구가 2억 ~ 3억인 국가를 출력"></a>인구가 2억 ~ 3억인 국가를 출력</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT code, name, population</span><br><span class="line">FROM country</span><br><span class="line">WHERE population &gt;&#x3D; 200000000 AND population &lt;&#x3D; 300000000;</span><br></pre></td></tr></table></figure>
+
+<h2 id="BETWEEN"><a href="#BETWEEN" class="headerlink" title="BETWEEN"></a>BETWEEN</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT code, name, population</span><br><span class="line">FROM country</span><br><span class="line">WHERE population BETWEEN 200000000 AND 300000000;</span><br></pre></td></tr></table></figure>
+
+<h2 id="아시아와-아프리카-대륙의-국가-데이터에서-인구수-1억-이상-데이터-출력"><a href="#아시아와-아프리카-대륙의-국가-데이터에서-인구수-1억-이상-데이터-출력" class="headerlink" title="아시아와 아프리카 대륙의 국가 데이터에서 인구수 1억 이상 데이터 출력"></a>아시아와 아프리카 대륙의 국가 데이터에서 인구수 1억 이상 데이터 출력</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT code, name, continent, population</span><br><span class="line">FROM country</span><br><span class="line">WHERE (continent &#x3D; &quot;Asia&quot; OR continent &#x3D; &quot;Africa&quot;)</span><br><span class="line">AND population &gt;&#x3D; 100000000;</span><br></pre></td></tr></table></figure>
+
+<h2 id="IN"><a href="#IN" class="headerlink" title="IN"></a>IN</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT code, name, continent, population</span><br><span class="line">FROM country</span><br><span class="line">WHERE continent IN (&quot;Asia&quot;, &quot;Africa&quot;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="NOT-IN"><a href="#NOT-IN" class="headerlink" title="NOT IN"></a>NOT IN</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT code, name, continent, population</span><br><span class="line">FROM country</span><br><span class="line">WHERE continent NOT IN (&quot;Asia&quot;, &quot;Africa&quot;);</span><br></pre></td></tr></table></figure>
+
+<h1 id="LIKE-특정-문자열이-포함된-데이터를-출력"><a href="#LIKE-특정-문자열이-포함된-데이터를-출력" class="headerlink" title="LIKE : 특정 문자열이 포함된 데이터를 출력"></a>LIKE : 특정 문자열이 포함된 데이터를 출력</h1><h2 id="정부형태가-Republic인-국가를-출력"><a href="#정부형태가-Republic인-국가를-출력" class="headerlink" title="정부형태가 Republic인 국가를 출력"></a>정부형태가 Republic인 국가를 출력</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT code, name, GovernmentForm</span><br><span class="line">FROM country</span><br><span class="line">WHERE GovernmentForm LIKE &quot;%Republic%&quot;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="ORDER-BY-데이터-정렬"><a href="#ORDER-BY-데이터-정렬" class="headerlink" title="ORDER BY : 데이터 정렬"></a>ORDER BY : 데이터 정렬</h1><h2 id="국가-데이터를-인구수-순으로-오름차순으로-정렬"><a href="#국가-데이터를-인구수-순으로-오름차순으로-정렬" class="headerlink" title="국가 데이터를 인구수 순으로 오름차순으로 정렬"></a>국가 데이터를 인구수 순으로 오름차순으로 정렬</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT code, name, population</span><br><span class="line">FROM country</span><br><span class="line">ORDER BY population ASC; # ASC 은 생략가능</span><br></pre></td></tr></table></figure>
+
+<h2 id="내림차순"><a href="#내림차순" class="headerlink" title="내림차순"></a>내림차순</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT code, name, population</span><br><span class="line">FROM country</span><br><span class="line">ORDER BY population DESC;</span><br></pre></td></tr></table></figure>
+
+<p>기준 컬럼을 여러개 설정 : 1번째 조건으로 소팅 &gt; 같으면 2번쨰 조건으로 소팅</p>
+<p>city 테이블에서 국가 코드 순으로 정렬(오름차순)하고</p>
+<p>국가 코드가 같으면 인구수 순으로 정렬(내림차순)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT countrycode, name, population</span><br><span class="line">FROM city</span><br><span class="line">WHERE countrycode IN (&quot;USA&quot;, &quot;KOR&quot;, &quot;JPN&quot;)</span><br><span class="line">ORDER BY countrycode ASC, population DESC;</span><br></pre></td></tr></table></figure>
+
+<h2 id="LIMIT-조회하는-데이터-수를-제한"><a href="#LIMIT-조회하는-데이터-수를-제한" class="headerlink" title="LIMIT : 조회하는 데이터 수를 제한"></a>LIMIT : 조회하는 데이터 수를 제한</h2><h3 id="인구가-많은-상위-7개-도시를-출력"><a href="#인구가-많은-상위-7개-도시를-출력" class="headerlink" title="인구가 많은 상위 7개 도시를 출력"></a>인구가 많은 상위 7개 도시를 출력</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT countrycode, name, population</span><br><span class="line">FROM city</span><br><span class="line">ORDER BY population DESC</span><br><span class="line">LIMIT 7;</span><br></pre></td></tr></table></figure>
+
+<h2 id="LIMIT-5-2-앞에-5개의-데이터를-스킵하고-뒤에-2개-데이터를-출력"><a href="#LIMIT-5-2-앞에-5개의-데이터를-스킵하고-뒤에-2개-데이터를-출력" class="headerlink" title="LIMIT 5, 2 : 앞에 5개의 데이터를 스킵하고 뒤에 2개 데이터를 출력"></a>LIMIT 5, 2 : 앞에 5개의 데이터를 스킵하고 뒤에 2개 데이터를 출력</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT countrycode, name, population</span><br><span class="line">FROM city</span><br><span class="line">ORDER BY population DESC</span><br><span class="line">LIMIT 5, 2;</span><br></pre></td></tr></table></figure>
+
+<h3 id="한국-KOR-의-경기도-Kyonggi-에-해당하는-도시에서-인구가-많은-3개의-도시를-출력"><a href="#한국-KOR-의-경기도-Kyonggi-에-해당하는-도시에서-인구가-많은-3개의-도시를-출력" class="headerlink" title="한국(KOR)의 경기도(Kyonggi)에 해당하는 도시에서 인구가 많은 3개의 도시를 출력"></a>한국(KOR)의 경기도(Kyonggi)에 해당하는 도시에서 인구가 많은 3개의 도시를 출력</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT *</span><br><span class="line">FROM city</span><br><span class="line">WHERE countrycode &#x3D; &quot;KOR&quot; AND district &#x3D; &quot;Kyonggi&quot;</span><br><span class="line">ORDER BY population DESC</span><br><span class="line">LIMIT 3;</span><br></pre></td></tr></table></figure>
+
+<h3 id="동북아시아에서-인당-GNP가-높은-5개-나라를-출력"><a href="#동북아시아에서-인당-GNP가-높은-5개-나라를-출력" class="headerlink" title="동북아시아에서 인당 GNP가 높은 5개 나라를 출력"></a>동북아시아에서 인당 GNP가 높은 5개 나라를 출력</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT code, name, GNP, population, (gnp &#x2F; population) AS GNP_per_population</span><br><span class="line">FROM country</span><br><span class="line">WHERE region &#x3D; &quot;Eastern Asia&quot;</span><br><span class="line">ORDER BY GNP &#x2F; population DESC</span><br><span class="line">LIMIT 5;</span><br></pre></td></tr></table></figure>
+
+<h3 id="인구밀도가-높은-국가-6위-10위까지-출력"><a href="#인구밀도가-높은-국가-6위-10위까지-출력" class="headerlink" title="인구밀도가 높은 국가 6위 ~ 10위까지 출력"></a>인구밀도가 높은 국가 6위 ~ 10위까지 출력</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT code, name, surfacearea, population, population &#x2F; surfacearea AS population_per_surfaceArea</span><br><span class="line">FROM country</span><br><span class="line">ORDER BY population_per_surfaceArea DESC;</span><br></pre></td></tr></table></figure>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://tezla-lee.github.io/2020/10/26/20201026-MySQL/" data-id="ckgqep4r10000wfvcg0bv2h1q" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Jaebok Lee"
+        },
+        "headline": "MySQL 시작",
+        "image": "https://tezla-lee.github.io",
+        "keywords": "",
+        "genre": "",
+        "datePublished": "2020-10-26",
+        "dateCreated": "2020-10-26",
+        "dateModified": "2020-10-26",
+        "url": "https://tezla-lee.github.io/2020/10/26/20201026-MySQL/",
+        "description": "MySQL 시작Index
+데이터 베이스의 개요
+Mysql 설치 및 설정
+샘플 데이터 추가
+Mysql Workbench 사용법
+데이터 베이스 모델링
+SQL문의 종류 : DML DDL DCL
+SELECT FROM
+WHERE, IN, LIKE
+ORDER BY
+LIMIT
+GROUP BY, HAVING
+CREATE USE ALTER DROP
+DATA TYPE
+Con",
+        "wordCount": 1711
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="stack-overflow" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-stack-overflow"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2020/08/16/200815-Pineapple/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">파인애플 키우기</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/10/26/20201026-MySQL/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/10/26/20201026-MySQL/" class="title">MySQL 시작</a></p>
+                            <p class="item-date"><time datetime="2020-10-26T09:57:41.149Z" itemprop="datePublished">2020-10-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/08/16/200815-Pineapple/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://user-images.githubusercontent.com/67692842/90316887-60140280-df60-11ea-805a-416710f829ff.jpeg)" alt="파인애플 키우기" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/08/16/200815-Pineapple/" class="title">파인애플 키우기</a></p>
+                            <p class="item-date"><time datetime="2020-08-15T15:11:07.878Z" itemprop="datePublished">2020-08-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/08/11/20200811-Enumeration/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/08/11/20200811-Enumeration/" class="title">열거형 (Enumeration)</a></p>
+                            <p class="item-date"><time datetime="2020-08-11T12:06:26.170Z" itemprop="datePublished">2020-08-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/08/11/20200811-Interface/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/08/11/20200811-Interface/" class="title">인터페이스 (Interface)</a></p>
+                            <p class="item-date"><time datetime="2020-08-11T12:05:14.235Z" itemprop="datePublished">2020-08-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/08/11/20200810-Polymorphism/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/08/11/20200810-Polymorphism/" class="title">다형성 (Polymorphism)</a></p>
+                            <p class="item-date"><time datetime="2020-08-11T11:58:15.983Z" itemprop="datePublished">2020-08-11</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2020 Jaebok Lee</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'https://tezla-lee.github.io/2020/10/26/20201026-MySQL/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
