@@ -20,7 +20,7 @@
 <meta property="og:description" content="Mysql BackupIndex Backup의 종류 실습 1 : Hot Logical Backup 실습 2 : Cold Physical Backup  1. Backup의 종류Hot Backup데이터 베이스를 중지하지 않은 상태로 데이터 백업  백업하는 동안 서비스가 실행 백업하는 동안 데이터가 변경되어 완전한 백업이 안될수 있음  Cold Backup데이터">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-10-29T10:33:17.213Z">
-<meta property="article:modified_time" content="2020-10-29T10:50:33.378Z">
+<meta property="article:modified_time" content="2020-10-29T11:16:21.794Z">
 <meta property="article:author" content="Jaebok Lee">
 <meta name="twitter:card" content="summary">
     
@@ -180,7 +180,7 @@
 <div class="article-date">
   <i class="fa fa-calendar-plus-o"></i>
   <a href="/2020/10/29/20201029-MysqlBackup/" class="article-date">
-     <time datetime="2020-10-29T10:50:33.378Z" itemprop="dateModified">2020-10-29</time>
+     <time datetime="2020-10-29T11:16:21.794Z" itemprop="dateModified">2020-10-29</time>
   </a>
 </div>
 
@@ -236,8 +236,7 @@
 <h2 id="2-실습-1-Hot-Logical-Backup"><a href="#2-실습-1-Hot-Logical-Backup" class="headerlink" title="2. 실습 1 : Hot Logical Backup"></a>2. 실습 1 : Hot Logical Backup</h2><h3 id="test-데이터-베이스를-test-backup-sql-파일로-백업"><a href="#test-데이터-베이스를-test-backup-sql-파일로-백업" class="headerlink" title="test 데이터 베이스를 test_backup.sql 파일로 백업"></a>test 데이터 베이스를 test_backup.sql 파일로 백업</h3><p>mysqldump -u root -p(패스워드) (데이터베이스) &gt; (저장할 파일 이름)</p>
 <figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> mysqldump -u root -prada <span class="built_in">test</span> &gt; test_backup.sql</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="backup-shell-script-작성-backup-sh"><a href="#backup-shell-script-작성-backup-sh" class="headerlink" title="backup shell script 작성 (backup.sh)"></a>backup shell script 작성 (backup.sh)</h3><p>—————————————————————————————————————</p>
-<h3 id="backup-파일을-저장할-스크립트-작성"><a href="#backup-파일을-저장할-스크립트-작성" class="headerlink" title="backup 파일을 저장할 스크립트 작성"></a>backup 파일을 저장할 스크립트 작성</h3><figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> mkdir backup</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> vi backup.sh</span></span><br></pre></td></tr></table></figure>
+<h3 id="backup-shell-script-작성-backup-sh"><a href="#backup-shell-script-작성-backup-sh" class="headerlink" title="backup shell script 작성 (backup.sh)"></a>backup shell script 작성 (backup.sh)</h3><h3 id="backup-파일을-저장할-스크립트-작성"><a href="#backup-파일을-저장할-스크립트-작성" class="headerlink" title="backup 파일을 저장할 스크립트 작성"></a>backup 파일을 저장할 스크립트 작성</h3><figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> mkdir backup</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> vi backup.sh</span></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line"></span><br><span class="line">BD&#x3D;&#96;date +%Y%m%d_%H%M --date&#x3D;today&#96;</span><br><span class="line">FILE&#x3D;$&#123;BD&#125;.sql</span><br><span class="line"></span><br><span class="line">cd backup</span><br><span class="line"># echo &quot;mysqldump -u root -prada test &gt; $FILE&quot;</span><br><span class="line">mysqldump -u root -prada test &gt; $FILE</span><br></pre></td></tr></table></figure>
 
