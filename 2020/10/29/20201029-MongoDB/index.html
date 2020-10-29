@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>MongoDB | Tezla&#39;s Blog</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="" />
+    
+    <meta name="description" content="MongoDB1. Install MongoDB123456789sudo apt update -ysudo apt upgrade -ysudo apt install -y mongodbsudo systemctl status mongodbsudo vi &#x2F;etc&#x2F;mongodb.conf------------------bind_ip &#x3D; 0.0.0.0auth &#x3D; true--">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MongoDB">
+<meta property="og:url" content="https://tezla-lee.github.io/2020/10/29/20201029-MongoDB/index.html">
+<meta property="og:site_name" content="Tezla&#39;s Blog">
+<meta property="og:description" content="MongoDB1. Install MongoDB123456789sudo apt update -ysudo apt upgrade -ysudo apt install -y mongodbsudo systemctl status mongodbsudo vi &#x2F;etc&#x2F;mongodb.conf------------------bind_ip &#x3D; 0.0.0.0auth &#x3D; true--">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-29T11:03:45.341Z">
+<meta property="article:modified_time" content="2020-10-29T11:15:30.782Z">
+<meta property="article:author" content="Jaebok Lee">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/" title="Tezla&#39;s Blog" type="application/atom+xml" />
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    uncategorized
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-20201029-MongoDB" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        MongoDB
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2020/10/29/20201029-MongoDB/" class="article-date">
+       <time datetime="2020-10-29T11:03:45.341Z" itemprop="datePublished">2020-10-29</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2020/10/29/20201029-MongoDB/" class="article-date">
+     <time datetime="2020-10-29T11:15:30.782Z" itemprop="dateModified">2020-10-29</time>
+  </a>
+</div>
+
+
+                
+
+                
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <h1 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h1><h2 id="1-Install-MongoDB"><a href="#1-Install-MongoDB" class="headerlink" title="1. Install MongoDB"></a>1. Install MongoDB</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update -y</span><br><span class="line">sudo apt upgrade -y</span><br><span class="line">sudo apt install -y mongodb</span><br><span class="line">sudo systemctl status mongodb</span><br><span class="line">sudo vi /etc/mongodb.conf</span><br><span class="line">------------------</span><br><span class="line">bind_ip = 0.0.0.0</span><br><span class="line">auth = true</span><br><span class="line">------------------</span><br></pre></td></tr></table></figure>
+
+<h3 id="패스워드-설정"><a href="#패스워드-설정" class="headerlink" title="패스워드 설정"></a>패스워드 설정</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> mongo</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> use admin</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> db.createUser(&#123; user: <span class="string">&quot;rada&quot;</span>, <span class="built_in">pwd</span>: <span class="string">&quot;radapw&quot;</span>, roles: [ <span class="string">&quot;root&quot;</span> ] &#125;)</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> quit()</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo systemctl restart mongodb</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="aws-인스턴스-27017-포트-접속-허용"><a href="#aws-인스턴스-27017-포트-접속-허용" class="headerlink" title="aws 인스턴스 27017 포트 접속 허용"></a>aws 인스턴스 27017 포트 접속 허용</h2><p>mongo 명령어를 입력하면 mongo shell에 접속됩니다.</p>
+<h2 id="2-Install-Robomongo"><a href="#2-Install-Robomongo" class="headerlink" title="2. Install Robomongo"></a>2. Install Robomongo</h2><p><a target="_blank" rel="noopener" href="https://robomongo.org/">https://robomongo.org/</a> 페이지에서 경로에서 ROBO 3T 다운로드 후 설치 합니다.</p>
+<h2 id="3-Connection"><a href="#3-Connection" class="headerlink" title="3. Connection"></a>3. Connection</h2><p>MongoDB Connections에서 ip를 입력하여 서버의 mongoDB에 접속합니다.</p>
+<h2 id="4-Basic-Syntax"><a href="#4-Basic-Syntax" class="headerlink" title="4. Basic Syntax"></a>4. Basic Syntax</h2><p><a target="_blank" rel="noopener" href="https://docs.mongodb.com/v3.6/reference/">https://docs.mongodb.com/v3.6/reference/</a></p>
+<h3 id="4-1-Create-Database"><a href="#4-1-Create-Database" class="headerlink" title="4.1 Create Database"></a>4.1 Create Database</h3><p>mongo 라는 이름의 데이터 베이스 생성</p>
+<figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use mongo</span><br></pre></td></tr></table></figure>
+
+<p>현재 사용중인 데이터 베이스 확인</p>
+<figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db</span><br></pre></td></tr></table></figure>
+
+<p>database list 확인</p>
+<figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show dbs</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>데이터 베에스를 생성후에 최소 1개이상의 document를 추가해야 생성된 데이터 베이스가 보입니다.</li>
+</ul>
+<p>document 생성</p>
+<figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">use mongo</span><br><span class="line">db.user.insert(&#123;<span class="string">&quot;name&quot;</span>:<span class="string">&quot;alice&quot;</span>, <span class="string">&quot;age&quot;</span>:<span class="number">20</span>, <span class="string">&quot;email&quot;</span>:<span class="string">&quot;alice@gmail.com&quot;</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-Delete-Database"><a href="#4-2-Delete-Database" class="headerlink" title="4.2 Delete Database"></a>4.2 Delete Database</h3><p>현재 사용중인 데이터 베이스 삭제</p>
+<figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.dropDatabase()</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-3-Create-Collection"><a href="#4-3-Create-Collection" class="headerlink" title="4.3 Create Collection"></a>4.3 Create Collection</h3><h4 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://docs.mongodb.com/v3.6/reference/method/db.createCollection/">https://docs.mongodb.com/v3.6/reference/method/db.createCollection/</a></li>
+</ul>
+<p>name : collection 이름</p>
+<figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.createCollection(name, [option])</span><br></pre></td></tr></table></figure>
+
+<h4 id="option"><a href="#option" class="headerlink" title="option"></a>option</h4><ul>
+<li>capped : true로 설정하면 collection의 최대 용량을 설정 (최대 용량의 크기는 size 옵션으로<br>설정), 설정된 최대용량 이상으로 데이터가 입력되면 오래된 데이터 부터 자동으로 삭제됩니다.</li>
+<li>autoIndex : true로 설정하면 _id 필드에 index가 자동으로 생성됩니다.</li>
+<li>size : 숫자 데이터를 사용하며 collection의 최대 사이즈를 byte 단위로 지정</li>
+<li>max : 숫자 데이터를 사용하며 최대 document 갯수를 설정</li>
+</ul>
+<p>user 컬렉션을 생성</p>
+<figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.createCollection(<span class="string">&quot;user&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>autoIndex와 max 옵션을 설정하여 info 컬렉션을 생성</p>
+<figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">db.createCollection(<span class="string">&quot;info1&quot;</span>, &#123; autoIndexId: <span class="keyword">true</span>, capped: <span class="keyword">true</span>, size: <span class="number">500</span>, max:<span class="number">5</span> &#125;)</span><br><span class="line">db.createCollection(<span class="string">&quot;info2&quot;</span>, &#123; autoIndexId: <span class="keyword">true</span>, capped: <span class="keyword">true</span>, size: <span class="number">50</span>, max:<span class="number">5</span> &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>createCollection을 사용하지 않고 article 컬렉션을 생성</p>
+<figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.articles.insert( &#123;<span class="string">&quot;title&quot;</span>:<span class="string">&quot;data science&quot;</span>, <span class="string">&quot;contents&quot;</span>:<span class="string">&quot;mongodb&quot;</span> &#125; )</span><br></pre></td></tr></table></figure>
+
+<p>컬렉션 리스트 확인</p>
+<figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show collections</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-4-Delete-Collection"><a href="#4-4-Delete-Collection" class="headerlink" title="4.4 Delete Collection"></a>4.4 Delete Collection</h3><p>articles 컬렉션 삭제</p>
+<figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.articles.drop()</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-5-Make-Document"><a href="#4-5-Make-Document" class="headerlink" title="4.5 Make Document"></a>4.5 Make Document</h3><figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.&lt;collection_name&gt;.insert(&lt;document&gt;)</span><br></pre></td></tr></table></figure>
+
+<p>info 컬렉션에 document 추가</p>
+<figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">db.info1.insert(&#123; <span class="string">&quot;subject&quot;</span>:<span class="string">&quot;python&quot;</span>, <span class="string">&quot;level&quot;</span>:<span class="number">3</span> &#125;)</span><br><span class="line">db.info1.insert(&#123; <span class="string">&quot;subject&quot;</span>:<span class="string">&quot;web&quot;</span>, <span class="string">&quot;level&quot;</span>:<span class="number">1</span> &#125;)</span><br><span class="line">db.info1.insert(&#123; <span class="string">&quot;subject&quot;</span>:<span class="string">&quot;sql&quot;</span>, <span class="string">&quot;level&quot;</span>:<span class="number">2</span> &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>한번에 여러개의 document 추가</p>
+<p>max:5 옵션 제한에 걸려 5개의 데이터가 info1에 들어간다.</p>
+<figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">db.info1.insert( [</span><br><span class="line">&#123; <span class="string">&quot;subject&quot;</span>:<span class="string">&quot;python&quot;</span>, <span class="string">&quot;level&quot;</span>:<span class="number">3</span> &#125;,</span><br><span class="line">&#123; <span class="string">&quot;subject&quot;</span>:<span class="string">&quot;web&quot;</span>, <span class="string">&quot;level&quot;</span>:<span class="number">1</span> &#125;,</span><br><span class="line">&#123; <span class="string">&quot;subject&quot;</span>:<span class="string">&quot;sql&quot;</span>, <span class="string">&quot;level&quot;</span>:<span class="number">2</span> &#125;,</span><br><span class="line">&#123; <span class="string">&quot;subject&quot;</span>:<span class="string">&quot;python&quot;</span>, <span class="string">&quot;level&quot;</span>:<span class="number">3</span> &#125;,</span><br><span class="line">&#123; <span class="string">&quot;subject&quot;</span>:<span class="string">&quot;web&quot;</span>, <span class="string">&quot;level&quot;</span>:<span class="number">1</span> &#125;,</span><br><span class="line">&#123; <span class="string">&quot;subject&quot;</span>:<span class="string">&quot;sql&quot;</span>, <span class="string">&quot;level&quot;</span>:<span class="number">2</span> &#125;,</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
+
+<p>size:50 옵션 제한에 걸려 4개의 데이터가 info2에 입력된다.</p>
+<figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">db.info2.insert( [</span><br><span class="line">&#123; <span class="string">&quot;subject&quot;</span>:<span class="string">&quot;python&quot;</span>, <span class="string">&quot;level&quot;</span>:<span class="number">3</span> &#125;,</span><br><span class="line">&#123; <span class="string">&quot;subject&quot;</span>:<span class="string">&quot;web&quot;</span>, <span class="string">&quot;level&quot;</span>:<span class="number">1</span> &#125;,</span><br><span class="line">&#123; <span class="string">&quot;subject&quot;</span>:<span class="string">&quot;sql&quot;</span>, <span class="string">&quot;level&quot;</span>:<span class="number">2</span> &#125;,</span><br><span class="line">&#123; <span class="string">&quot;subject&quot;</span>:<span class="string">&quot;python&quot;</span>, <span class="string">&quot;level&quot;</span>:<span class="number">3</span> &#125;,</span><br><span class="line">&#123; <span class="string">&quot;subject&quot;</span>:<span class="string">&quot;web&quot;</span>, <span class="string">&quot;level&quot;</span>:<span class="number">1</span> &#125;,</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line">db.info.insert( [</span><br><span class="line">&#123; <span class="string">&quot;subject&quot;</span>:<span class="string">&quot;python&quot;</span>, <span class="string">&quot;level&quot;</span>:<span class="number">3</span> &#125;,</span><br><span class="line">&#123; <span class="string">&quot;subject&quot;</span>:<span class="string">&quot;web&quot;</span>, <span class="string">&quot;level&quot;</span>:<span class="number">1</span> &#125;,</span><br><span class="line">&#123; <span class="string">&quot;subject&quot;</span>:<span class="string">&quot;sql&quot;</span>, <span class="string">&quot;level&quot;</span>:<span class="number">2</span> &#125;,</span><br><span class="line">&#123; <span class="string">&quot;subject&quot;</span>:<span class="string">&quot;java&quot;</span>, <span class="string">&quot;level&quot;</span>:<span class="number">3</span> &#125;,</span><br><span class="line">&#123; <span class="string">&quot;subject&quot;</span>:<span class="string">&quot;html&quot;</span>, <span class="string">&quot;level&quot;</span>:<span class="number">1</span> &#125;,</span><br><span class="line">&#123; <span class="string">&quot;subject&quot;</span>:<span class="string">&quot;css&quot;</span>, <span class="string">&quot;level&quot;</span>:<span class="number">2</span> &#125;,</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-6-Delete-Document"><a href="#4-6-Delete-Document" class="headerlink" title="4.6 Delete Document"></a>4.6 Delete Document</h3><p>level2인 데이터 삭제 : 제약조건이 걸려있는 컬렉션의 도큐먼트는 삭제가 안됩니다.</p>
+<figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.info.remove( &#123;level:<span class="number">2</span>&#125; )</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-7-Find"><a href="#4-7-Find" class="headerlink" title="4.7 Find"></a>4.7 Find</h3><h4 id="reference-1"><a href="#reference-1" class="headerlink" title="reference"></a>reference</h4><p><a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/reference/method/db.collection.find/index.html">https://docs.mongodb.com/manual/reference/method/db.collection.find/index.html</a></p>
+<h4 id="format"><a href="#format" class="headerlink" title="format"></a>format</h4><figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.collection.find(query, projection)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>query : document 조회 조건을 설정. 모든 document를 조회 할때는 ({})를 사용</li>
+<li>projection : document를 조회할때 보여지는 필드(컬럼)를 정의</li>
+</ul>
+<h3 id="4-7-1-query"><a href="#4-7-1-query" class="headerlink" title="4.7.1 query"></a>4.7.1 query</h3><h4 id="4-7-1-1-기본-document-조회"><a href="#4-7-1-1-기본-document-조회" class="headerlink" title="4.7.1.1 기본 document 조회"></a>4.7.1.1 기본 document 조회</h4><p>info 컬렉션에 있는 모든 document 조회</p>
+<figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">db.info.find()</span><br><span class="line">db.getCollection(<span class="string">&#x27;info&#x27;</span>).find(&#123;&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>subject가 python인 document 조회</p>
+<figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.info.find(&#123;<span class="string">&quot;subject&quot;</span>: <span class="string">&quot;python&quot;</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-7-1-2-비교-연산자"><a href="#4-7-1-2-비교-연산자" class="headerlink" title="4.7.1.2 비교 연산자"></a>4.7.1.2 비교 연산자</h4><h5 id="reference-2"><a href="#reference-2" class="headerlink" title="reference"></a>reference</h5><p><a target="_blank" rel="noopener" href="https://docs.mongodb.com/v3.6/reference/operator/query/">https://docs.mongodb.com/v3.6/reference/operator/query/</a></p>
+<p>level이 2 이하인 document를 조회</p>
+<figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.info.find(&#123;<span class="string">&quot;level&quot;</span>: &#123;\$lte: <span class="number">2</span>&#125; &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>level이 3 이상인 document를 조회</p>
+<figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.info.find(&#123;<span class="string">&quot;level&quot;</span>: &#123;\$gte: <span class="number">3</span>&#125; &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>subject가 java와 python을 포함하는 document 조회</p>
+<figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.info.find( &#123;<span class="string">&quot;subject&quot;</span>: &#123;\$in: [<span class="string">&quot;java&quot;</span>, <span class="string">&quot;python&quot;</span>]&#125;&#125; )</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-7-1-3-논리-연산자"><a href="#4-7-1-3-논리-연산자" class="headerlink" title="4.7.1.3 논리 연산자"></a>4.7.1.3 논리 연산자</h4><ul>
+<li>$or : 조건중 하나라도 true이면 true</li>
+<li>$and : 모든 조건이 true이면 true</li>
+<li>$not : 조건중 하나라도 false이면 true</li>
+<li>$nor : 모든 조건이 false이면 true (or와 반대 개념)</li>
+</ul>
+<p>subject가 python이고 level이 3이상인 document 조회</p>
+<figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.info.find(&#123; $and: [ &#123; <span class="string">&quot;subject&quot;</span>:<span class="string">&quot;python&quot;</span> &#125;, &#123; <span class="string">&quot;level&quot;</span>: &#123;$gte: <span class="number">3</span>&#125; &#125; ] &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>subject가 python이아니고 level이 1이하가 아닌 document 조회</p>
+<figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.info.find(&#123; $nor: [ &#123; <span class="string">&quot;subject&quot;</span>:<span class="string">&quot;python&quot;</span> &#125;, &#123; <span class="string">&quot;level&quot;</span>: &#123;$lte: <span class="number">1</span>&#125; &#125; ] &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>level이 2보다 크지 않은 document 조회 (2 포함)</p>
+<figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.info.find(&#123; <span class="string">&quot;level&quot;</span>: &#123; $not: &#123;$gt: <span class="number">2</span>&#125; &#125; &#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-7-1-4-where"><a href="#4-7-1-4-where" class="headerlink" title="4.7.1.4 $where"></a>4.7.1.4 $where</h4><p>$where 연산자를 사용하면 자바스크립트 표현식 사용이 가능합니다.</p>
+<h5 id="level이-1인-document-조회"><a href="#level이-1인-document-조회" class="headerlink" title="level이 1인 document 조회"></a>level이 1인 document 조회</h5><figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.info.find( &#123; \$where: <span class="string">&quot;this.level == 1&quot;</span>&#125; )</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-7-2-projection"><a href="#4-7-2-projection" class="headerlink" title="4.7.2 projection"></a>4.7.2 projection</h4><p>document를 조회할때 보여지는 필드(컬럼)를 정의합니다.</p>
+<h4 id="4-7-2-1-Basic"><a href="#4-7-2-1-Basic" class="headerlink" title="4.7.2.1 Basic"></a>4.7.2.1 Basic</h4><p>subject와 comments만 출력되도록 find</p>
+<p>설정을 true 값을 설정하던가 false 값을 설정합니다. ( _id는 따로 설정을 안하면 true )</p>
+<figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">db.info.find(&#123;&#125;,&#123;<span class="string">&quot;\_id&quot;</span>:<span class="keyword">false</span>, <span class="string">&quot;level&quot;</span>:<span class="keyword">false</span>&#125;)</span><br><span class="line">db.info.find(&#123;&#125;,&#123;<span class="string">&quot;subject&quot;</span>:<span class="keyword">true</span>, <span class="string">&quot;level&quot;</span>:<span class="keyword">true</span>&#125;)</span><br><span class="line">db.info.find(&#123;&#125;,&#123;<span class="string">&quot;\_id&quot;</span>:<span class="keyword">false</span>, <span class="string">&quot;subject&quot;</span>:<span class="keyword">true</span>, <span class="string">&quot;level&quot;</span>:<span class="keyword">true</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-8-Find-Method"><a href="#4-8-Find-Method" class="headerlink" title="4.8 Find Method"></a>4.8 Find Method</h3><p>find method를 사용하면 find를 사용한 document의 결과를 가공하여 출력할수 있습니다.</p>
+<h4 id="4-8-1-sort"><a href="#4-8-1-sort" class="headerlink" title="4.8.1 sort"></a>4.8.1 sort</h4><p>document를 정렬시켜 줍니다.<br>‘sort({key: value})’ 와 같은 포멧으로 사용을 하며 key는 정렬할 필드명을 작성하고, value는<br>오름차순은 1, 내림차순을 -1을 넣어주면 됩니다.</p>
+<p>info 컬렉션의 document를 level 오름차순으로 정렬</p>
+<figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.info.find().sort(&#123;<span class="string">&quot;level&quot;</span>:<span class="number">1</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>info 컬렉션의 document를 level 내림차순으로 정렬</p>
+<figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.info.find().sort(&#123;<span class="string">&quot;level&quot;</span>:-<span class="number">1</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>level을 기준으로 내림차순으로 정렬한 후 subject를 기준으로 오름차순으로 정렬</p>
+<figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.info.find().sort(&#123;<span class="string">&quot;level&quot;</span>:-<span class="number">1</span>, <span class="string">&quot;subject&quot;</span>:<span class="number">1</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-8-2-limit"><a href="#4-8-2-limit" class="headerlink" title="4.8.2 limit"></a>4.8.2 limit</h4><p>limit을 사용하면 document출력 결과의 수룰 제한할수 있습니다.</p>
+<p>document의 결과를 3개 까지만 출력</p>
+<figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.info.find().limit(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+<p>document의 결과를 level로 내림차순으로 정렬하고 3개까지만 출력</p>
+<figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.info.find().sort(&#123;<span class="string">&quot;level&quot;</span>:-<span class="number">1</span>&#125;).limit(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-8-3-skip"><a href="#4-8-3-skip" class="headerlink" title="4.8.3 skip"></a>4.8.3 skip</h4><p>skip을 검색한 document의 결과의 시작부분을 설정할때 사용합니다.</p>
+<p>document를 3번째 부터 출력</p>
+<figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.info.find().skip(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+<p>limit, skip을 함께 사용해서 mysql의 limit과 같이 사용할수 있습니다.</p>
+<h3 id="4-9-update"><a href="#4-9-update" class="headerlink" title="4.9 update"></a>4.9 update</h3><h4 id="reference-3"><a href="#reference-3" class="headerlink" title="reference"></a>reference</h4><p><a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/reference/command/update/index.html">https://docs.mongodb.com/manual/reference/command/update/index.html</a></p>
+<figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.collection.update( query, update, &#123; upsert: &lt;bool&gt;, multi: &lt;bool&gt; &#125;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>upsert : insert와 update의 합성어 (데이터가 있으면 update, 없으면 insert 한다는 의미)</li>
+<li>multi : true로 설정되면 여려개의 document를 수정합니다. 기본값은 false</li>
+</ul>
+<p>특정 document를 새로운 document로 수정하기</p>
+<figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">db.info.update(</span><br><span class="line">&#123; <span class="string">&quot;subject&quot;</span>: <span class="string">&quot;html&quot;</span> &#125;,</span><br><span class="line">&#123; <span class="string">&quot;subject&quot;</span>: <span class="string">&quot;sass&quot;</span>, <span class="string">&quot;level&quot;</span>:<span class="number">2</span>&#125;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">db.info.update(</span><br><span class="line">&#123; <span class="string">&quot;subject&quot;</span>: <span class="string">&quot;less&quot;</span> &#125;,</span><br><span class="line">&#123; <span class="string">&quot;subject&quot;</span>: <span class="string">&quot;less&quot;</span>, <span class="string">&quot;level&quot;</span>: <span class="number">2</span>&#125;,</span><br><span class="line"></span><br><span class="line">&#123; <span class="string">&quot;upsert&quot;</span>: <span class="keyword">true</span>&#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-9-1-set-unset"><a href="#4-9-1-set-unset" class="headerlink" title="4.9.1 $set, $unset"></a>4.9.1 $set, $unset</h4><p>$set을 사용하면 특정 document의 필드를 수정할수 있습니다.</p>
+<p>$unset를 사용하면 특정 document의 필드 제거할수 있습니다.</p>
+<h5 id="python의-level을-3으로-수정-한개의-데이터만-수정"><a href="#python의-level을-3으로-수정-한개의-데이터만-수정" class="headerlink" title="python의 level을 3으로 수정 (한개의 데이터만 수정)"></a>python의 level을 3으로 수정 (한개의 데이터만 수정)</h5><figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.info.update( &#123; subject: <span class="string">&quot;java&quot;</span> &#125;, &#123; \$set: &#123; level: <span class="number">4</span> &#125; &#125; )</span><br></pre></td></tr></table></figure>
+
+<h5 id="level-2를-level-1로-수정-여러개의-데이터-수정"><a href="#level-2를-level-1로-수정-여러개의-데이터-수정" class="headerlink" title="level 2를 level 1로 수정 (여러개의 데이터 수정)"></a>level 2를 level 1로 수정 (여러개의 데이터 수정)</h5><figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">db.info.update(</span><br><span class="line">&#123; level: <span class="number">2</span> &#125;,</span><br><span class="line">&#123; \$set: &#123; level: <span class="number">1</span> &#125; &#125;,</span><br><span class="line">&#123; multi: <span class="keyword">true</span> &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h5 id="subject가-sass인-document의-level필드-삭제"><a href="#subject가-sass인-document의-level필드-삭제" class="headerlink" title="subject가 sass인 document의 level필드 삭제"></a>subject가 sass인 document의 level필드 삭제</h5><figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db.info.update(</span><br><span class="line">&#123; subject: <span class="string">&quot;sass&quot;</span> &#125;,</span><br><span class="line">&#123; \$unset: &#123;level: <span class="number">1</span>&#125; &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>level: 1의 1은 true를 의미합니다.</p>
+<h5 id="level이-2이하인-데이터를-1로-수정하기"><a href="#level이-2이하인-데이터를-1로-수정하기" class="headerlink" title="level이 2이하인 데이터를 1로 수정하기"></a>level이 2이하인 데이터를 1로 수정하기</h5><figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">db.info.update(</span><br><span class="line">&#123; level: &#123;\$lte: <span class="number">2</span>&#125; &#125;,</span><br><span class="line"></span><br><span class="line">&#123; \$set: &#123;level: <span class="number">1</span>&#125; &#125;,</span><br><span class="line">&#123; multi: <span class="number">1</span> &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h5 id="level이-없는-데이터-level-추가하기"><a href="#level이-없는-데이터-level-추가하기" class="headerlink" title="level이 없는 데이터 level 추가하기"></a>level이 없는 데이터 level 추가하기</h5><figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">db.info.update(</span><br><span class="line">&#123; level: &#123;$exists: <span class="keyword">false</span>&#125; &#125;,</span><br><span class="line">&#123; $set: &#123;level: <span class="number">2</span>&#125; &#125;,</span><br><span class="line">&#123; multi: <span class="number">1</span> &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-10-Function"><a href="#4-10-Function" class="headerlink" title="4.10 Function"></a>4.10 Function</h3><p>자바스크립트 문법으로 함수 작성이 가능합니다.</p>
+<h4 id="skip-함수"><a href="#skip-함수" class="headerlink" title="skip 함수"></a>skip 함수</h4><figure class="highlight java"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> showSkip = function(start)&#123;</span><br><span class="line"><span class="keyword">return</span> db.info.find().skip(start)</span><br><span class="line">&#125;</span><br><span class="line">showSkip(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-Pymongo"><a href="#5-Pymongo" class="headerlink" title="5. Pymongo"></a>5. Pymongo</h2><p>파이썬 코드를 사용하여 Mongodb에 데이터를 저장하는 패키지</p>
+<h3 id="zigbang-py-모듈-파일을-서버로-이동"><a href="#zigbang-py-모듈-파일을-서버로-이동" class="headerlink" title="zigbang.py 모듈 파일을 서버로 이동"></a>zigbang.py 모듈 파일을 서버로 이동</h3><h3 id="코드에서-Mongodb-접속정보로-변경"><a href="#코드에서-Mongodb-접속정보로-변경" class="headerlink" title="코드에서 Mongodb 접속정보로 변경"></a>코드에서 Mongodb 접속정보로 변경</h3><h3 id="python3-설치"><a href="#python3-설치" class="headerlink" title="python3 설치"></a>python3 설치</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo apt install python3 python3-pip</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="python-패키지-설치"><a href="#python-패키지-설치" class="headerlink" title="python 패키지 설치"></a>python 패키지 설치</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> pip3 install requests geohash2 pandas pymongo</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="python-코드-실행"><a href="#python-코드-실행" class="headerlink" title="python 코드 실행"></a>python 코드 실행</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> python3 zigbang.py 망원동</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="망원동-원룸정보가-크롤링되고-크롤링-된-정보를-Mongodb에-저장"><a href="#망원동-원룸정보가-크롤링되고-크롤링-된-정보를-Mongodb에-저장" class="headerlink" title="망원동 원룸정보가 크롤링되고 크롤링 된 정보를 Mongodb에 저장"></a>망원동 원룸정보가 크롤링되고 크롤링 된 정보를 Mongodb에 저장</h3>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://tezla-lee.github.io/2020/10/29/20201029-MongoDB/" data-id="ckguqem5v0000ghvc0ap4ffnd" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Jaebok Lee"
+        },
+        "headline": "MongoDB",
+        "image": "https://tezla-lee.github.io",
+        "keywords": "",
+        "genre": "",
+        "datePublished": "2020-10-29",
+        "dateCreated": "2020-10-29",
+        "dateModified": "2020-10-29",
+        "url": "https://tezla-lee.github.io/2020/10/29/20201029-MongoDB/",
+        "description": "MongoDB1. Install MongoDB123456789sudo apt update -ysudo apt upgrade -ysudo apt install -y mongodbsudo systemctl status mongodbsudo vi /etc/mongodb.conf------------------bind_ip = 0.0.0.0auth = true--",
+        "wordCount": 1660
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="stack-overflow" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-stack-overflow"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2020/10/29/20201029-DB%20Replication/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Database Replication</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/10/29/20201029-MongoDB/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/10/29/20201029-MongoDB/" class="title">MongoDB</a></p>
+                            <p class="item-date"><time datetime="2020-10-29T11:03:45.341Z" itemprop="datePublished">2020-10-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/10/29/20201029-DB%20Replication/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/10/29/20201029-DB%20Replication/" class="title">Database Replication</a></p>
+                            <p class="item-date"><time datetime="2020-10-29T10:43:58.453Z" itemprop="datePublished">2020-10-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/10/29/20201029-MysqlBackup/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/10/29/20201029-MysqlBackup/" class="title">Mysql Backup</a></p>
+                            <p class="item-date"><time datetime="2020-10-29T10:33:17.213Z" itemprop="datePublished">2020-10-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/10/29/20201029-crontab/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/10/29/20201029-crontab/" class="title">Crontab</a></p>
+                            <p class="item-date"><time datetime="2020-10-29T10:10:55.304Z" itemprop="datePublished">2020-10-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/10/26/20201026-MySQL3/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/10/26/20201026-MySQL3/" class="title">MySQL 3</a></p>
+                            <p class="item-date"><time datetime="2020-10-26T11:28:13.013Z" itemprop="datePublished">2020-10-26</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2020 Jaebok Lee</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'https://tezla-lee.github.io/2020/10/29/20201029-MongoDB/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
